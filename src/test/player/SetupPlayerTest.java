@@ -26,7 +26,7 @@ class SetupPlayerTest {
 	void playerNameMinLengthBoundary() {
 		Player player = new Player();
 		boolean result = player.setup("J".repeat(2));
-		assertTrue(result);
+		assertFalse(result);
 	}
 	
 	@Test
