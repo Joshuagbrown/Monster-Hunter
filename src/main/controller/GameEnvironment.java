@@ -13,6 +13,7 @@ public class GameEnvironment {
 	
 	private int difficulty;
 	private int totalDays;
+	public int day;
 	
 	private ArrayList<Monster> party = new ArrayList<Monster>();
 	
@@ -28,6 +29,13 @@ public class GameEnvironment {
 		return player.setup(name);
 	}
 	
+	public int getDay() {
+		return this.day;
+	}
+	
+	public int getTotalDays() {
+		return this.totalDays;
+	}
 
 	public Player getPlayer() {
 		return player;
