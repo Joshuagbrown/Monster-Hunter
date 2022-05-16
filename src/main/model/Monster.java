@@ -25,6 +25,10 @@ public abstract class Monster {
 		
 	}
 	
+	public void useAbility() {
+		
+	}
+	
 	public void heal() {
 		this.currentHealth = this.currentHealth + this.healAmount;
 		if (this.currentHealth > this.maxHealth) {
@@ -36,8 +40,12 @@ public abstract class Monster {
 		return name;
 	}
 
-	public void setName(String name) {
+	public boolean setName(String name) {
+		if (name.length() < 3 || name.length() > 15) {
+			return false;
+		}
 		this.name = name;
+		return true;
 	}
 
 	public int getMaxHealth() {

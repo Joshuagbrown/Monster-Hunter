@@ -4,11 +4,15 @@ import java.util.ArrayList;
 
 import main.model.Monster;
 import main.model.Player;
+import main.view.MainScreen;
 import main.view.SetupScreen;
 
 public class GameEnvironment {
 
 	private Player player;
+	
+	private int difficulty;
+	private int totalDays;
 	
 	private ArrayList<Monster> party = new ArrayList<Monster>();
 	
@@ -17,9 +21,13 @@ public class GameEnvironment {
 		this.party = new ArrayList<Monster>();
 	}
 	
-	public boolean setupPlayer(String name) {
+	public boolean setupGame(String name, int days, Monster monster, int difficulty) {
+		this.party.add(monster);
+		this.difficulty = difficulty;
+		this.totalDays = days;
 		return player.setup(name);
 	}
+	
 
 	public Player getPlayer() {
 		return player;
@@ -36,6 +44,7 @@ public class GameEnvironment {
 	public void setParty(ArrayList<Monster> party) {
 		this.party = party;
 	}
+	
 
 	
 }
