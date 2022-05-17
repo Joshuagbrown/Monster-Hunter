@@ -1,0 +1,5 @@
+public class Gremlin extends Monster { 
+	 public Gremlin() {
+		 super("Gremlin", 30, 5, 5, 20)  )
+	 }
+}
