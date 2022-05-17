@@ -3,6 +3,7 @@ package main.controller;
 import java.util.ArrayList;
 
 import main.model.Monster;
+import main.model.Party;
 import main.model.Player;
 import main.view.MainScreen;
 import main.view.SetupScreen;
@@ -13,17 +14,16 @@ public class GameEnvironment {
 	
 	private int difficulty;
 	private int totalDays;
-	public int day;
+	private int day;
 	
-	private ArrayList<Monster> party = new ArrayList<Monster>();
+	private Party party;
 	
 	public GameEnvironment() {
 		this.player = new Player();
-		this.party = new ArrayList<Monster>();
 	}
 	
 	public boolean setupGame(String name, int days, Monster monster, int difficulty) {
-		this.party.add(monster);
+		this.party = new Party(monster);
 		this.difficulty = difficulty;
 		this.totalDays = days;
 		return player.setup(name);
@@ -45,13 +45,22 @@ public class GameEnvironment {
 		this.player = player;
 	}
 
-	public ArrayList<Monster> getParty() {
+	public Party getParty() {
 		return party;
 	}
 
-	public void setParty(ArrayList<Monster> party) {
+	public void setParty(Party party) {
 		this.party = party;
 	}
+
+	public boolean canBuy(int cost) {
+		if (this.player.getGold() >= cost && this.party.getSize() < 5) {
+			this.player.setGold(this.player.getGold() - cost);
+			return true;
+		}
+		return false;
+	}
+
 	
 
 	

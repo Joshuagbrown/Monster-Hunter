@@ -5,6 +5,8 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 
 import main.controller.GameEnvironment;
+import main.controller.GameRunner;
+
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -26,13 +28,13 @@ import javax.swing.border.EtchedBorder;
 import javax.swing.JButton;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.MatteBorder;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class MainScreen {
 
 	private JFrame frame;
 	private GameEnvironment gameEnvironment;
-	String monsterName = "Empty Slot";
-	private int monsterCount = 0;
 
 	/**
 	 * Create the application.
@@ -43,16 +45,7 @@ public class MainScreen {
 		frame.setVisible(true);
 		
 	}
-	
-	public String monsterName(int monsterCount) {
-		int partySize = gameEnvironment.getParty().size();
-		if (monsterCount < partySize) {
-			monsterName = gameEnvironment.getParty().get(monsterCount).getName();
-		} else {
-			monsterName = "Empty Slot";
-		}
-		return monsterName;
-	}
+
 
 	/**
 	 * Initialize the contents of the frame.
@@ -187,8 +180,7 @@ public class MainScreen {
 		
 		
 		
-		JLabel monsterPartyLabel1 = new JLabel(monsterName(monsterCount));
-		monsterCount += 1;
+		JLabel monsterPartyLabel1 = new JLabel(gameEnvironment.getParty().getName(0));
 		monsterPartyLabel1.setFont(new Font("Bell MT", Font.PLAIN, 12));
 		monsterPartyLabel1.setHorizontalAlignment(SwingConstants.CENTER);
 		monsterPartyPanel.add(monsterPartyLabel1);
@@ -198,28 +190,25 @@ public class MainScreen {
 		monsterPartyPanel.add(monster1StatsPanel);
 		monster1StatsPanel.setLayout(new GridLayout(1, 3, 0, 0));
 		
-		JLabel monster1CurrentHealth = new JLabel("New label");
+		JLabel monster1CurrentHealth = new JLabel(gameEnvironment.getParty().getHealth(0));
 		monster1CurrentHealth.setFont(new Font("Bell MT", Font.PLAIN, 12));
 		monster1CurrentHealth.setForeground(new Color(0, 128, 0));
 		monster1CurrentHealth.setHorizontalAlignment(SwingConstants.CENTER);
 		monster1StatsPanel.add(monster1CurrentHealth);
 		
-		JLabel lblNewLabel_1_1 = new JLabel("New label");
-		lblNewLabel_1_1.setFont(new Font("Bell MT", Font.PLAIN, 12));
-		lblNewLabel_1_1.setForeground(new Color(255, 0, 0));
-		lblNewLabel_1_1.setHorizontalAlignment(SwingConstants.CENTER);
-		monster1StatsPanel.add(lblNewLabel_1_1);
+		JLabel monster1Damage = new JLabel(gameEnvironment.getParty().getDamage(0));
+		monster1Damage.setFont(new Font("Bell MT", Font.PLAIN, 12));
+		monster1Damage.setForeground(new Color(255, 0, 0));
+		monster1Damage.setHorizontalAlignment(SwingConstants.CENTER);
+		monster1StatsPanel.add(monster1Damage);
 		
-		JLabel lblNewLabel_2_1 = new JLabel("New label");
-		lblNewLabel_2_1.setFont(new Font("Bell MT", Font.PLAIN, 12));
-		lblNewLabel_2_1.setForeground(new Color(255, 165, 0));
-		lblNewLabel_2_1.setHorizontalAlignment(SwingConstants.CENTER);
-		monster1StatsPanel.add(lblNewLabel_2_1);
+		JLabel monster1Heal = new JLabel(gameEnvironment.getParty().getHeal(0));
+		monster1Heal.setFont(new Font("Bell MT", Font.PLAIN, 12));
+		monster1Heal.setForeground(new Color(255, 165, 0));
+		monster1Heal.setHorizontalAlignment(SwingConstants.CENTER);
+		monster1StatsPanel.add(monster1Heal);
 		
-
-		
-		JLabel monsterPartyLabel2 = new JLabel(monsterName(monsterCount));
-		monsterCount += 1;
+		JLabel monsterPartyLabel2 = new JLabel(gameEnvironment.getParty().getName(1));
 		monsterPartyLabel2.setFont(new Font("Bell MT", Font.PLAIN, 12));
 		monsterPartyLabel2.setHorizontalAlignment(SwingConstants.CENTER);
 		monsterPartyPanel.add(monsterPartyLabel2);
@@ -228,26 +217,25 @@ public class MainScreen {
 		monsterPartyPanel.add(monster2StatsPanel);
 		monster2StatsPanel.setLayout(new GridLayout(1, 3, 0, 0));
 		
-		JLabel monster2CurrentHealth = new JLabel("New label");
+		JLabel monster2CurrentHealth = new JLabel(gameEnvironment.getParty().getHealth(1));
 		monster2CurrentHealth.setFont(new Font("Bell MT", Font.PLAIN, 12));
 		monster2CurrentHealth.setForeground(new Color(0, 128, 0));
 		monster2CurrentHealth.setHorizontalAlignment(SwingConstants.CENTER);
 		monster2StatsPanel.add(monster2CurrentHealth);
 		
-		JLabel lblNewLabel_1_2 = new JLabel("New label");
-		lblNewLabel_1_2.setFont(new Font("Bell MT", Font.PLAIN, 12));
-		lblNewLabel_1_2.setForeground(new Color(255, 0, 0));
-		lblNewLabel_1_2.setHorizontalAlignment(SwingConstants.CENTER);
-		monster2StatsPanel.add(lblNewLabel_1_2);
+		JLabel monster2Damage = new JLabel(gameEnvironment.getParty().getDamage(1));
+		monster2Damage.setFont(new Font("Bell MT", Font.PLAIN, 12));
+		monster2Damage.setForeground(new Color(255, 0, 0));
+		monster2Damage.setHorizontalAlignment(SwingConstants.CENTER);
+		monster2StatsPanel.add(monster2Damage);
 		
-		JLabel lblNewLabel_2_2 = new JLabel("New label");
-		lblNewLabel_2_2.setFont(new Font("Bell MT", Font.PLAIN, 12));
-		lblNewLabel_2_2.setForeground(new Color(255, 165, 0));
-		lblNewLabel_2_2.setHorizontalAlignment(SwingConstants.CENTER);
-		monster2StatsPanel.add(lblNewLabel_2_2);
-		
-		JLabel monsterPartyLabel3 = new JLabel(monsterName(monsterCount));
-		monsterCount += 1;
+		JLabel monster2Heal = new JLabel(gameEnvironment.getParty().getHeal(1));
+		monster2Heal.setFont(new Font("Bell MT", Font.PLAIN, 12));
+		monster2Heal.setForeground(new Color(255, 165, 0));
+		monster2Heal.setHorizontalAlignment(SwingConstants.CENTER);
+		monster2StatsPanel.add(monster2Heal);
+	
+		JLabel monsterPartyLabel3 = new JLabel(gameEnvironment.getParty().getName(2));
 		monsterPartyLabel3.setFont(new Font("Bell MT", Font.PLAIN, 12));
 		monsterPartyLabel3.setHorizontalAlignment(SwingConstants.CENTER);
 		monsterPartyPanel.add(monsterPartyLabel3);
@@ -256,80 +244,78 @@ public class MainScreen {
 		monsterPartyPanel.add(monster3StatsPanel);
 		monster3StatsPanel.setLayout(new GridLayout(1, 3, 0, 0));
 		
-		JLabel monster3CurrentHealth = new JLabel("New label");
+		JLabel monster3CurrentHealth = new JLabel(gameEnvironment.getParty().getHealth(2));
 		monster3CurrentHealth.setFont(new Font("Bell MT", Font.PLAIN, 12));
 		monster3CurrentHealth.setForeground(new Color(0, 128, 0));
 		monster3CurrentHealth.setHorizontalAlignment(SwingConstants.CENTER);
 		monster3StatsPanel.add(monster3CurrentHealth);
 		
-		JLabel lblNewLabel_1_3 = new JLabel("New label");
-		lblNewLabel_1_3.setFont(new Font("Bell MT", Font.PLAIN, 12));
-		lblNewLabel_1_3.setForeground(new Color(255, 0, 0));
-		lblNewLabel_1_3.setHorizontalAlignment(SwingConstants.CENTER);
-		monster3StatsPanel.add(lblNewLabel_1_3);
+		JLabel monster3Damage = new JLabel(gameEnvironment.getParty().getDamage(2));
+		monster3Damage.setFont(new Font("Bell MT", Font.PLAIN, 12));
+		monster3Damage.setForeground(new Color(255, 0, 0));
+		monster3Damage.setHorizontalAlignment(SwingConstants.CENTER);
+		monster3StatsPanel.add(monster3Damage);
 		
-		JLabel lblNewLabel_2_3 = new JLabel("New label");
-		lblNewLabel_2_3.setFont(new Font("Bell MT", Font.PLAIN, 12));
-		lblNewLabel_2_3.setForeground(new Color(255, 165, 0));
-		lblNewLabel_2_3.setHorizontalAlignment(SwingConstants.CENTER);
-		monster3StatsPanel.add(lblNewLabel_2_3);
+		JLabel monster3Heal = new JLabel(gameEnvironment.getParty().getHeal(2));
+		monster3Heal.setFont(new Font("Bell MT", Font.PLAIN, 12));
+		monster3Heal.setForeground(new Color(255, 165, 0));
+		monster3Heal.setHorizontalAlignment(SwingConstants.CENTER);
+		monster3StatsPanel.add(monster3Heal);
 		
 				
-				JLabel monsterPartyLabel4 = new JLabel(monsterName(monsterCount));
-				monsterCount += 1;
-				monsterPartyLabel4.setFont(new Font("Bell MT", Font.PLAIN, 12));
-				monsterPartyLabel4.setHorizontalAlignment(SwingConstants.CENTER);
-				monsterPartyPanel.add(monsterPartyLabel4);
-				
-				JPanel monster4StatsPanel = new JPanel();
-				monsterPartyPanel.add(monster4StatsPanel);
-				monster4StatsPanel.setLayout(new GridLayout(1, 3, 0, 0));
-				
-				JLabel monster4CurrentHealth = new JLabel("New label");
-				monster4CurrentHealth.setFont(new Font("Bell MT", Font.PLAIN, 12));
-				monster4CurrentHealth.setForeground(new Color(0, 128, 0));
-				monster4CurrentHealth.setHorizontalAlignment(SwingConstants.CENTER);
-				monster4StatsPanel.add(monster4CurrentHealth);
-				
-				JLabel lblNewLabel_1_4 = new JLabel("New label");
-				lblNewLabel_1_4.setFont(new Font("Bell MT", Font.PLAIN, 12));
-				lblNewLabel_1_4.setForeground(new Color(255, 0, 0));
-				lblNewLabel_1_4.setHorizontalAlignment(SwingConstants.CENTER);
-				monster4StatsPanel.add(lblNewLabel_1_4);
-				
-				JLabel lblNewLabel_2_4 = new JLabel("New label");
-				lblNewLabel_2_4.setFont(new Font("Bell MT", Font.PLAIN, 12));
-				lblNewLabel_2_4.setForeground(new Color(255, 165, 0));
-				lblNewLabel_2_4.setHorizontalAlignment(SwingConstants.CENTER);
-				monster4StatsPanel.add(lblNewLabel_2_4);
-				
-				JLabel monsterPartyLabel5 = new JLabel(monsterName(monsterCount));
-				monsterCount += 1;
-				monsterPartyLabel5.setFont(new Font("Bell MT", Font.PLAIN, 12));
-				monsterPartyLabel5.setHorizontalAlignment(SwingConstants.CENTER);
-				monsterPartyPanel.add(monsterPartyLabel5);
-				
-				JPanel monster5StatsPanel = new JPanel();
-				monsterPartyPanel.add(monster5StatsPanel);
-				monster5StatsPanel.setLayout(new GridLayout(1, 3, 0, 0));
-				
-				JLabel monster5CurrentHealth = new JLabel("New label");
-				monster5CurrentHealth.setFont(new Font("Bell MT", Font.PLAIN, 12));
-				monster5CurrentHealth.setForeground(new Color(0, 128, 0));
-				monster5CurrentHealth.setHorizontalAlignment(SwingConstants.CENTER);
-				monster5StatsPanel.add(monster5CurrentHealth);
-				
-				JLabel lblNewLabel_1_5 = new JLabel("New label");
-				lblNewLabel_1_5.setFont(new Font("Bell MT", Font.PLAIN, 12));
-				lblNewLabel_1_5.setForeground(new Color(255, 0, 0));
-				lblNewLabel_1_5.setHorizontalAlignment(SwingConstants.CENTER);
-				monster5StatsPanel.add(lblNewLabel_1_5);
-				
-				JLabel lblNewLabel_2_5 = new JLabel("New label");
-				lblNewLabel_2_5.setFont(new Font("Bell MT", Font.PLAIN, 12));
-				lblNewLabel_2_5.setForeground(new Color(255, 165, 0));
-				lblNewLabel_2_5.setHorizontalAlignment(SwingConstants.CENTER);
-				monster5StatsPanel.add(lblNewLabel_2_5);
+		JLabel monsterPartyLabel4 = new JLabel(gameEnvironment.getParty().getName(3));
+		monsterPartyLabel4.setFont(new Font("Bell MT", Font.PLAIN, 12));
+		monsterPartyLabel4.setHorizontalAlignment(SwingConstants.CENTER);
+		monsterPartyPanel.add(monsterPartyLabel4);
+		
+		JPanel monster4StatsPanel = new JPanel();
+		monsterPartyPanel.add(monster4StatsPanel);
+		monster4StatsPanel.setLayout(new GridLayout(1, 3, 0, 0));
+		
+		JLabel monster4CurrentHealth = new JLabel(gameEnvironment.getParty().getHealth(3));
+		monster4CurrentHealth.setFont(new Font("Bell MT", Font.PLAIN, 12));
+		monster4CurrentHealth.setForeground(new Color(0, 128, 0));
+		monster4CurrentHealth.setHorizontalAlignment(SwingConstants.CENTER);
+		monster4StatsPanel.add(monster4CurrentHealth);
+		
+		JLabel monster4Damage = new JLabel(gameEnvironment.getParty().getDamage(3));
+		monster4Damage.setFont(new Font("Bell MT", Font.PLAIN, 12));
+		monster4Damage.setForeground(new Color(255, 0, 0));
+		monster4Damage.setHorizontalAlignment(SwingConstants.CENTER);
+		monster4StatsPanel.add(monster4Damage);
+		
+		JLabel monster4Heal = new JLabel(gameEnvironment.getParty().getHeal(3));
+		monster4Heal.setFont(new Font("Bell MT", Font.PLAIN, 12));
+		monster4Heal.setForeground(new Color(255, 165, 0));
+		monster4Heal.setHorizontalAlignment(SwingConstants.CENTER);
+		monster4StatsPanel.add(monster4Heal);
+		
+		JLabel monsterPartyLabel5 = new JLabel(gameEnvironment.getParty().getName(4));
+		monsterPartyLabel5.setFont(new Font("Bell MT", Font.PLAIN, 12));
+		monsterPartyLabel5.setHorizontalAlignment(SwingConstants.CENTER);
+		monsterPartyPanel.add(monsterPartyLabel5);
+		
+		JPanel monster5StatsPanel = new JPanel();
+		monsterPartyPanel.add(monster5StatsPanel);
+		monster5StatsPanel.setLayout(new GridLayout(1, 3, 0, 0));
+		
+		JLabel monster5CurrentHealth = new JLabel(gameEnvironment.getParty().getHealth(4));
+		monster5CurrentHealth.setFont(new Font("Bell MT", Font.PLAIN, 12));
+		monster5CurrentHealth.setForeground(new Color(0, 128, 0));
+		monster5CurrentHealth.setHorizontalAlignment(SwingConstants.CENTER);
+		monster5StatsPanel.add(monster5CurrentHealth);
+		
+		JLabel monster5Damage = new JLabel(gameEnvironment.getParty().getDamage(4));
+		monster5Damage.setFont(new Font("Bell MT", Font.PLAIN, 12));
+		monster5Damage.setForeground(new Color(255, 0, 0));
+		monster5Damage.setHorizontalAlignment(SwingConstants.CENTER);
+		monster5StatsPanel.add(monster5Damage);
+		
+		JLabel monster5Heal = new JLabel(gameEnvironment.getParty().getHeal(4));
+		monster5Heal.setFont(new Font("Bell MT", Font.PLAIN, 12));
+		monster5Heal.setForeground(new Color(255, 165, 0));
+		monster5Heal.setHorizontalAlignment(SwingConstants.CENTER);
+		monster5StatsPanel.add(monster5Heal);
 		
 		JPanel randomEventPanel = new JPanel();
 		randomEventPanel.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "?", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
@@ -448,6 +434,12 @@ public class MainScreen {
 		shopPanel.add(lblNewLabel_1, gbc_lblNewLabel_1);
 		
 		JButton shopBuyButton = new JButton("Open Shop");
+		shopBuyButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				GameRunner.launchShopScreen(gameEnvironment);
+				frame.dispose();
+			}
+		});
 		shopBuyButton.setFont(new Font("Bell MT", Font.PLAIN, 12));
 		GridBagConstraints gbc_shopBuyButton = new GridBagConstraints();
 		gbc_shopBuyButton.fill = GridBagConstraints.HORIZONTAL;

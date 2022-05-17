@@ -7,6 +7,7 @@ import main.model.Monster;
 import main.model.Orc;
 import main.view.MainScreen;
 import main.view.SetupScreen;
+import main.view.ShopScreen;
 
 public class GameRunner {
 	
@@ -23,6 +24,11 @@ public class GameRunner {
 	public static void launchMainScreen(GameEnvironment gameEnvironment) {
 		MainScreen mainScreen = new MainScreen(gameEnvironment);
 	}
+	
+	public static void launchShopScreen(GameEnvironment gameEnvironment) {
+		ShopScreen shopScreen = new ShopScreen(gameEnvironment);
+	}
+	
 	
 	public static void main(String args[]) {
 		GameEnvironment gameEnvironment = new GameEnvironment();

@@ -1,6 +1,6 @@
 package main.model;
 
-public abstract class Monster  {
+public abstract class Monster implements Purchasable {
 	
 	private String name;
 	

@@ -1,14 +1,20 @@
-package softwareEngineering201.Project;
-
+package main.view;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.JTextField;
-import javax.swing.JButton;
 
-public class Shop {
+import main.controller.GameEnvironment;
+import main.controller.GameRunner;
+import main.model.Elf;
+
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+public class ShopScreen {
 
 	private JFrame frmTheShop;
 	private JTextField textField;
@@ -32,28 +38,16 @@ public class Shop {
 	private JTextField textField_13;
 	private JTextField textField_14;
 	private JTextField textField_15;
+	private GameEnvironment gameEnvironment;
 
 	/**
-	 * Launch the application.
+	 * Create the application
+	 *
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Shop window = new Shop();
-					window.frmTheShop.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the application.
-	 */
-	public Shop() {
+	public ShopScreen(GameEnvironment gameEnvironment) {
+		this.gameEnvironment = gameEnvironment;
 		initialize();
+		frmTheShop.setVisible(true);
 	}
 
 	/**
@@ -200,6 +194,13 @@ public class Shop {
 		frmTheShop.getContentPane().add(btnNewButton_8);
 		
 		JButton btnNewButton_9 = new JButton("$300");
+		btnNewButton_9.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (gameEnvironment.canBuy(0)) {
+					gameEnvironment.getParty().addMonster(new Elf());
+				}
+			}
+		});
 		btnNewButton_9.setBounds(104, 85, 74, 29);
 		frmTheShop.getContentPane().add(btnNewButton_9);
 		
@@ -348,5 +349,15 @@ public class Shop {
 		JButton btnNewButton_5 = new JButton("$200");
 		btnNewButton_5.setBounds(164, 291, 73, 29);
 		frmTheShop.getContentPane().add(btnNewButton_5);
+		
+		JButton btnNewButton_6 = new JButton("Exit");
+		btnNewButton_6.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				GameRunner.launchMainScreen(gameEnvironment);
+				frmTheShop.dispose();
+			}
+		});
+		btnNewButton_6.setBounds(546, 411, 85, 21);
+		frmTheShop.getContentPane().add(btnNewButton_6);
 	}
 }
