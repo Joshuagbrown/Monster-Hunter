@@ -60,6 +60,14 @@ public class GameEnvironment {
 		}
 		return false;
 	}
+	
+	public boolean canSell() {
+		if (this.party.getSize() > 1) {
+			
+		}
+		return false;
+		
+	}
 
 	
 

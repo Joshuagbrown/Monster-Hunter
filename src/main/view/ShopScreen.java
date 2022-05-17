@@ -8,7 +8,11 @@ import javax.swing.JTextField;
 
 import main.controller.GameEnvironment;
 import main.controller.GameRunner;
+import main.model.Dragon;
 import main.model.Elf;
+import main.model.Gremlin;
+import main.model.Orc;
+import main.model.Wizard;
 
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -28,16 +32,6 @@ public class ShopScreen {
 	private JTextField textField_3;
 	private JTextField textField_4;
 	private JTextField textField_5;
-	private JTextField textField_6;
-	private JTextField textField_7;
-	private JTextField textField_8;
-	private JTextField textField_9;
-	private JTextField textField_10;
-	private JTextField textField_11;
-	private JTextField textField_12;
-	private JTextField textField_13;
-	private JTextField textField_14;
-	private JTextField textField_15;
 	private GameEnvironment gameEnvironment;
 
 	/**
@@ -189,52 +183,87 @@ public class ShopScreen {
 		frmTheShop.getContentPane().add(textField_5);
 		textField_5.setColumns(10);
 		
-		JButton btnNewButton_8 = new JButton("$100");
-		btnNewButton_8.setBounds(104, 55, 74, 29);
-		frmTheShop.getContentPane().add(btnNewButton_8);
+		JButton gremlinBuyButton = new JButton("$100");
+		gremlinBuyButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (gameEnvironment.canBuy(100)) {
+					gameEnvironment.getParty().addMonster(new Gremlin());
+				}
+			}
+		});
+		gremlinBuyButton.setBounds(91, 53, 74, 29);
+		frmTheShop.getContentPane().add(gremlinBuyButton);
 		
-		JButton btnNewButton_9 = new JButton("$300");
-		btnNewButton_9.addActionListener(new ActionListener() {
+		JButton elfBuyButton = new JButton("$300");
+		elfBuyButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (gameEnvironment.canBuy(0)) {
 					gameEnvironment.getParty().addMonster(new Elf());
 				}
 			}
 		});
-		btnNewButton_9.setBounds(104, 85, 74, 29);
-		frmTheShop.getContentPane().add(btnNewButton_9);
+		elfBuyButton.setBounds(91, 83, 74, 29);
+		frmTheShop.getContentPane().add(elfBuyButton);
 		
-		JButton btnNewButton_10 = new JButton("$500");
-		btnNewButton_10.setBounds(104, 115, 74, 29);
-		frmTheShop.getContentPane().add(btnNewButton_10);
+		JButton orcBuyButton = new JButton("$500");
+		orcBuyButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (gameEnvironment.canBuy(500)) {
+					gameEnvironment.getParty().addMonster(new Orc());
+				}
+			}
+		});
+		orcBuyButton.setBounds(91, 113, 74, 29);
+		frmTheShop.getContentPane().add(orcBuyButton);
 		
-		JButton btnNewButton_11 = new JButton("$1000");
-		btnNewButton_11.setBounds(104, 144, 74, 29);
-		frmTheShop.getContentPane().add(btnNewButton_11);
+		JButton wizardBuyButton = new JButton("$1000");
+		wizardBuyButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (gameEnvironment.canBuy(1000)) {
+					gameEnvironment.getParty().addMonster(new Wizard());
+				}
+			}
+		});
+		wizardBuyButton.setBounds(91, 142, 74, 29);
+		frmTheShop.getContentPane().add(wizardBuyButton);
 		
-		JButton btnNewButton_12 = new JButton("$2000");
-		btnNewButton_12.setBounds(104, 173, 74, 29);
-		frmTheShop.getContentPane().add(btnNewButton_12);
+		JButton dragonBuyButton = new JButton("$2000");
+		dragonBuyButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (gameEnvironment.canBuy(2000)) {
+					gameEnvironment.getParty().addMonster(new Dragon());
+				}
+			}
+		});
+		dragonBuyButton.setBounds(91, 171, 74, 29);
+		frmTheShop.getContentPane().add(dragonBuyButton);
 		
-		JButton btnNewButton_13 = new JButton("$50");
-		btnNewButton_13.setBounds(164, 55, 74, 29);
-		frmTheShop.getContentPane().add(btnNewButton_13);
+		JButton gremlinSellButton = new JButton("$50");
+		gremlinSellButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (gameEnvironment.canSell()) {
+					gameEnvironment.getParty().addMonster(new Elf());
+				}
+			}
+		});
+		gremlinSellButton.setBounds(164, 53, 74, 29);
+		frmTheShop.getContentPane().add(gremlinSellButton);
 		
-		JButton btnNewButton_14 = new JButton("$200");
-		btnNewButton_14.setBounds(164, 85, 73, 29);
-		frmTheShop.getContentPane().add(btnNewButton_14);
+		JButton elfSellButton = new JButton("$200");
+		elfSellButton.setBounds(164, 83, 73, 29);
+		frmTheShop.getContentPane().add(elfSellButton);
 		
-		JButton btnNewButton_15 = new JButton("$300");
-		btnNewButton_15.setBounds(164, 115, 73, 29);
-		frmTheShop.getContentPane().add(btnNewButton_15);
+		JButton orcSellButton = new JButton("$300");
+		orcSellButton.setBounds(164, 113, 73, 29);
+		frmTheShop.getContentPane().add(orcSellButton);
 		
-		JButton btnNewButton_16 = new JButton("$700");
-		btnNewButton_16.setBounds(164, 144, 73, 29);
-		frmTheShop.getContentPane().add(btnNewButton_16);
+		JButton wizardSellButton = new JButton("$700");
+		wizardSellButton.setBounds(164, 142, 73, 29);
+		frmTheShop.getContentPane().add(wizardSellButton);
 		
-		JButton btnNewButton_17 = new JButton("$1500");
-		btnNewButton_17.setBounds(164, 173, 73, 29);
-		frmTheShop.getContentPane().add(btnNewButton_17);
+		JButton dragonSellButton = new JButton("$1500");
+		dragonSellButton.setBounds(164, 171, 73, 29);
+		frmTheShop.getContentPane().add(dragonSellButton);
 		
 		JLabel lblNewLabel_5 = new JLabel("Gremlin");
 		lblNewLabel_5.setBounds(17, 57, 61, 16);
@@ -260,59 +289,9 @@ public class ShopScreen {
 		lblNewLabel_24.setBounds(6, 335, 61, 16);
 		frmTheShop.getContentPane().add(lblNewLabel_24);
 		
-		textField_6 = new JTextField();
-		textField_6.setBounds(0, 354, 130, 26);
-		frmTheShop.getContentPane().add(textField_6);
-		textField_6.setColumns(10);
-		
-		textField_7 = new JTextField();
-		textField_7.setBounds(153, 354, 130, 26);
-		frmTheShop.getContentPane().add(textField_7);
-		textField_7.setColumns(10);
-		
-		textField_8 = new JTextField();
-		textField_8.setBounds(310, 354, 130, 26);
-		frmTheShop.getContentPane().add(textField_8);
-		textField_8.setColumns(10);
-		
-		textField_9 = new JTextField();
-		textField_9.setBounds(463, 354, 130, 26);
-		frmTheShop.getContentPane().add(textField_9);
-		textField_9.setColumns(10);
-		
 		JLabel lblNewLabel_25 = new JLabel("My Items:");
 		lblNewLabel_25.setBounds(6, 381, 61, 16);
 		frmTheShop.getContentPane().add(lblNewLabel_25);
-		
-		textField_10 = new JTextField();
-		textField_10.setBounds(0, 409, 66, 26);
-		frmTheShop.getContentPane().add(textField_10);
-		textField_10.setColumns(10);
-		
-		textField_11 = new JTextField();
-		textField_11.setBounds(65, 409, 66, 26);
-		frmTheShop.getContentPane().add(textField_11);
-		textField_11.setColumns(10);
-		
-		textField_12 = new JTextField();
-		textField_12.setBounds(128, 409, 66, 26);
-		frmTheShop.getContentPane().add(textField_12);
-		textField_12.setColumns(10);
-		
-		textField_13 = new JTextField();
-		textField_13.setBounds(191, 409, 66, 26);
-		frmTheShop.getContentPane().add(textField_13);
-		textField_13.setColumns(10);
-		
-		textField_14 = new JTextField();
-		textField_14.setBounds(254, 409, 66, 26);
-		frmTheShop.getContentPane().add(textField_14);
-		textField_14.setColumns(10);
-		
-		textField_15 = new JTextField();
-		textField_15.setBounds(315, 409, 66, 26);
-		frmTheShop.getContentPane().add(textField_15);
-		textField_15.setColumns(10);
 		
 		JLabel lblNewLabel_26 = new JLabel("Healing Potion");
 		lblNewLabel_26.setBounds(6, 235, 99, 16);
@@ -327,23 +306,23 @@ public class ShopScreen {
 		frmTheShop.getContentPane().add(lblNewLabel_28);
 		
 		JButton btnNewButton = new JButton("$200");
-		btnNewButton.setBounds(104, 230, 74, 29);
+		btnNewButton.setBounds(91, 229, 74, 29);
 		frmTheShop.getContentPane().add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("$300");
-		btnNewButton_1.setBounds(104, 261, 74, 29);
+		btnNewButton_1.setBounds(91, 260, 74, 29);
 		frmTheShop.getContentPane().add(btnNewButton_1);
 		
 		JButton btnNewButton_2 = new JButton("$400");
-		btnNewButton_2.setBounds(104, 291, 74, 29);
+		btnNewButton_2.setBounds(91, 291, 74, 29);
 		frmTheShop.getContentPane().add(btnNewButton_2);
 		
 		JButton btnNewButton_3 = new JButton("$100");
-		btnNewButton_3.setBounds(164, 230, 73, 29);
+		btnNewButton_3.setBounds(164, 229, 73, 29);
 		frmTheShop.getContentPane().add(btnNewButton_3);
 		
 		JButton btnNewButton_4 = new JButton("$200");
-		btnNewButton_4.setBounds(164, 263, 73, 29);
+		btnNewButton_4.setBounds(164, 260, 73, 29);
 		frmTheShop.getContentPane().add(btnNewButton_4);
 		
 		JButton btnNewButton_5 = new JButton("$200");
@@ -359,5 +338,49 @@ public class ShopScreen {
 		});
 		btnNewButton_6.setBounds(546, 411, 85, 21);
 		frmTheShop.getContentPane().add(btnNewButton_6);
+		
+		JLabel lblNewLabel_18 = new JLabel("New label");
+		lblNewLabel_18.setBounds(6, 356, 81, 26);
+		frmTheShop.getContentPane().add(lblNewLabel_18);
+		
+		JLabel lblNewLabel_18_1 = new JLabel("New label");
+		lblNewLabel_18_1.setBounds(91, 356, 81, 26);
+		frmTheShop.getContentPane().add(lblNewLabel_18_1);
+		
+		JLabel lblNewLabel_18_2 = new JLabel("New label");
+		lblNewLabel_18_2.setBounds(257, 356, 81, 26);
+		frmTheShop.getContentPane().add(lblNewLabel_18_2);
+		
+		JLabel lblNewLabel_18_3 = new JLabel("New label");
+		lblNewLabel_18_3.setBounds(176, 356, 81, 26);
+		frmTheShop.getContentPane().add(lblNewLabel_18_3);
+		
+		JLabel lblNewLabel_18_4 = new JLabel("New label");
+		lblNewLabel_18_4.setBounds(336, 356, 81, 26);
+		frmTheShop.getContentPane().add(lblNewLabel_18_4);
+		
+		JLabel lblNewLabel_18_4_1 = new JLabel("New label");
+		lblNewLabel_18_4_1.setBounds(336, 407, 81, 26);
+		frmTheShop.getContentPane().add(lblNewLabel_18_4_1);
+		
+		JLabel lblNewLabel_18_2_1 = new JLabel("New label");
+		lblNewLabel_18_2_1.setBounds(257, 407, 81, 26);
+		frmTheShop.getContentPane().add(lblNewLabel_18_2_1);
+		
+		JLabel lblNewLabel_18_3_1 = new JLabel("New label");
+		lblNewLabel_18_3_1.setBounds(176, 407, 81, 26);
+		frmTheShop.getContentPane().add(lblNewLabel_18_3_1);
+		
+		JLabel lblNewLabel_18_1_1 = new JLabel("New label");
+		lblNewLabel_18_1_1.setBounds(91, 407, 81, 26);
+		frmTheShop.getContentPane().add(lblNewLabel_18_1_1);
+		
+		JLabel lblNewLabel_18_5 = new JLabel("New label");
+		lblNewLabel_18_5.setBounds(6, 407, 81, 26);
+		frmTheShop.getContentPane().add(lblNewLabel_18_5);
+		
+		JLabel lblNewLabel_18_4_1_1 = new JLabel("New label");
+		lblNewLabel_18_4_1_1.setBounds(416, 408, 81, 26);
+		frmTheShop.getContentPane().add(lblNewLabel_18_4_1_1);
 	}
 }
