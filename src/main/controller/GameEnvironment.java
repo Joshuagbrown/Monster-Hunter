@@ -53,20 +53,23 @@ public class GameEnvironment {
 		this.party = party;
 	}
 
-	public boolean canBuy(int cost) {
-		if (this.player.getGold() >= cost && this.party.getSize() < 5) {
-			this.player.setGold(this.player.getGold() - cost);
+	public boolean buyMonster(Monster m) {
+		if (this.player.getGold() >= m.getPurchasePrice() && this.party.getSize() < 5) {
+			this.player.setGold(this.player.getGold() - m.getPurchasePrice());
+			this.party.addMonster(m);
 			return true;
 		}
 		return false;
 	}
 	
-	public boolean canSell() {
-		if (this.party.getSize() > 1) {
-			
+	public boolean sellMonster(int index) {
+		if (this.party.getSize() > index) {
+			Monster m = this.getParty().getMonsterAtIndex(index);
+			this.player.setGold(this.player.getGold() + m.getSellPrice());
+			this.party.removeMonsterAtIndex(index);
+			return true;
 		}
 		return false;
-		
 	}
 
 	

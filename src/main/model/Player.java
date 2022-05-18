@@ -14,6 +14,7 @@ public class Player {
 		if (name.length() < 3 || name.length() > 15)
 			return false;
 		this.name = name;
+		this.gold = 10000;
 		
 		return true;
 	}

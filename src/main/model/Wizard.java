@@ -1,6 +1,6 @@
 package main.model;
 public class Wizard extends Monster { 
 	 public Wizard() {
-		 super("Wizard", 50, 20, 30, 40) ;
+		 super("Wizard", 50, 20, 30, 40, 50, 50) ;
 	 }
 }

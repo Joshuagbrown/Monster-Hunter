@@ -1,6 +1,6 @@
 package main.model;
 public class Dragon extends Monster { 
 	 public Dragon() {
-		 super("Dragon", 80, 30, 20, 70);
+		 super("Dragon", 80, 30, 20, 70, 50, 50);
 	 }
 }

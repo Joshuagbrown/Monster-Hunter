@@ -2,21 +2,9 @@ package main.model;
 
 interface Purchasable {
 	
-	public static boolean buy(int price) {
-		
-		
-		return true;
-		
-	}
-		// Check enough money
-		// Reduce money
-		// add new monster to party
-		
+	public int purchasePrice = 0;
+	public int sellPrice = 0;
 	
-	public static void sell() {
-
-		
-	}
-	
+	public void getThis();
 	
 }

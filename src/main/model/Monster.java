@@ -1,6 +1,6 @@
 package main.model;
 
-public abstract class Monster implements Purchasable {
+public abstract class Monster {
 	
 	private String name;
 	
@@ -11,16 +11,38 @@ public abstract class Monster implements Purchasable {
 	private int healAmount;
 	
 	private int currentHealth;
+	
+	private int purchasePrice;
+	
+	private int sellPrice;
 
-	public Monster(String name, int maxHealth, int damage, int healAmount, int currentHealth) {
+	public Monster(String name, int maxHealth, int damage, int healAmount, int currentHealth, int purchasePrice, int sellPrice) {
 		super();
 		this.name = name;
 		this.maxHealth = maxHealth;
 		this.damage = damage;
 		this.healAmount = healAmount;
 		this.currentHealth = currentHealth;
+		this.purchasePrice = purchasePrice;
+		this.sellPrice = sellPrice;
 	}
 	
+	public int getPurchasePrice() {
+		return purchasePrice;
+	}
+
+	public void setPurchasePrice(int purchasePrice) {
+		this.purchasePrice = purchasePrice;
+	}
+
+	public int getSellPrice() {
+		return sellPrice;
+	}
+
+	public void setSellPrice(int sellPrice) {
+		this.sellPrice = sellPrice;
+	}
+
 	public void attack() {
 		
 	}

@@ -57,6 +57,14 @@ public class Party {
 		this.getPartyList().add(m);
 	}
 	
+	public Monster getMonsterAtIndex(int index) {
+		return this.partyList.get(index);
+	}
+	
+	public void removeMonsterAtIndex(int index) {
+		this.partyList.remove(index);
+	}
+	
 	public int getSize() {
 		return this.partyList.size();
 	}
