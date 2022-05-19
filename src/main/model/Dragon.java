@@ -1,6 +1,7 @@
 package main.model;
 public class Dragon extends Monster { 
 	 public Dragon() {
-		 super("Dragon", 80, 30, 20, 70, 50, 50);
+		 //name, maxHealth, damage, healAmount, buyPrice, sellPrice 
+		 super("Dragon", 80, 30, 20, 50, 50);
 	 }
 }

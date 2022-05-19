@@ -59,6 +59,8 @@ public class SetupScreen {
 	private JLabel maxHealthValue;
 	private JLabel damageLabel;
 	private JLabel healAmountValue;
+	private JPanel panel_6;
+	private JLabel lblNewLabel;
 
 	/**
 	 * Create the application.
@@ -87,6 +89,7 @@ public class SetupScreen {
 		panel.setLayout(new GridLayout(0, 3, 0, 0));
 		
 		nameLabel = new JLabel("Name: ");
+		nameLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		panel.add(nameLabel);
 		
 		nameInput = new JTextField();
@@ -101,6 +104,7 @@ public class SetupScreen {
 		panel_1.setLayout(new GridLayout(0, 3, 0, 0));
 		
 		daysLabel = new JLabel("Days:");
+		daysLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		panel_1.add(daysLabel);
 		
 		daySlider = new JSlider();
@@ -118,6 +122,7 @@ public class SetupScreen {
 		panel_2.setLayout(new GridLayout(0, 3, 0, 0));
 		
 		monsterLabel = new JLabel("Starting Monster:");
+		monsterLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		panel_2.add(monsterLabel);
 		
 		startingMonsterSelector = new JComboBox<String>();
@@ -160,6 +165,7 @@ public class SetupScreen {
 		panel_4.setLayout(new GridLayout(0, 3, 0, 0));
 		
 		startingMonsterName = new JLabel("Monster Name:");
+		startingMonsterName.setHorizontalAlignment(SwingConstants.CENTER);
 		panel_4.add(startingMonsterName);
 		
 		startingMonsterNameInput = new JTextField();
@@ -174,16 +180,24 @@ public class SetupScreen {
 		frame.getContentPane().add(panel_3);
 		panel_3.setLayout(new GridLayout(0, 3, 0, 0));
 		
-		difficultyLabel = new JLabel("Difficulty");
+		difficultyLabel = new JLabel("Difficulty:");
+		difficultyLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		panel_3.add(difficultyLabel);
 		
 		difficultySelector = new JComboBox<String>();
 		difficultySelector.setModel(new DefaultComboBoxModel<String>(new String[] {"Easy", "Medium", "Hard"}));
 		panel_3.add(difficultySelector);
 		
+		panel_6 = new JPanel();
+		frame.getContentPane().add(panel_6);
+		panel_6.setLayout(new GridLayout(0, 2, 0, 0));
+		
+		lblNewLabel = new JLabel("Start Game?");
+		panel_6.add(lblNewLabel);
+		
 		
 		startButton = new JButton("Submit");
-		frame.getContentPane().add(startButton);
+		panel_6.add(startButton);
 		startButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				boolean valid = true;

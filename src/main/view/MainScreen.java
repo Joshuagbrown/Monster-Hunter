@@ -30,6 +30,7 @@ import javax.swing.border.BevelBorder;
 import javax.swing.border.MatteBorder;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.FlowLayout;
 
 public class MainScreen {
 
@@ -70,7 +71,7 @@ public class MainScreen {
 		gbc_playerPanel.gridx = 0;
 		gbc_playerPanel.gridy = 1;
 		frame.getContentPane().add(playerPanel, gbc_playerPanel);
-		playerPanel.setLayout(new GridLayout(0, 3, 5, 5));
+		playerPanel.setLayout(new GridLayout(0, 3, 10, 20));
 		
 		JPanel welcomePanel = new JPanel();
 		welcomePanel.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
@@ -124,17 +125,54 @@ public class MainScreen {
 		GridBagLayout gbl_battleSelectionPanel = new GridBagLayout();
 		gbl_battleSelectionPanel.columnWidths = new int[]{385, 0};
 		gbl_battleSelectionPanel.rowHeights = new int[]{153, 0};
-		gbl_battleSelectionPanel.columnWeights = new double[]{0.0, Double.MIN_VALUE};
+		gbl_battleSelectionPanel.columnWeights = new double[]{1.0, Double.MIN_VALUE};
 		gbl_battleSelectionPanel.rowWeights = new double[]{1.0, Double.MIN_VALUE};
 		battleSelectionPanel.setLayout(gbl_battleSelectionPanel);
 		
-		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setFont(new Font("Bell MT", Font.PLAIN, 12));
-		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
-		gbc_lblNewLabel.fill = GridBagConstraints.BOTH;
-		gbc_lblNewLabel.gridx = 0;
-		gbc_lblNewLabel.gridy = 0;
-		battleSelectionPanel.add(lblNewLabel, gbc_lblNewLabel);
+		JPanel battleButtonPanel = new JPanel();
+		battleButtonPanel.setLayout(null);
+		GridBagConstraints gbc_battleButtonPanel = new GridBagConstraints();
+		gbc_battleButtonPanel.fill = GridBagConstraints.BOTH;
+		gbc_battleButtonPanel.gridx = 0;
+		gbc_battleButtonPanel.gridy = 0;
+		battleSelectionPanel.add(battleButtonPanel, gbc_battleButtonPanel);
+		
+		JButton battle1Button = new JButton("Easy Fight");
+		battle1Button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				gameEnvironment.getEnemyMonsters(1);
+				GameRunner.launchBattleScreen(gameEnvironment);
+				frame.dispose();
+			}
+		});
+		battle1Button.setBounds(10, 42, 110, 48);
+		battleButtonPanel.add(battle1Button);
+		
+		JButton battle2Button = new JButton("Normal Fight");
+		battle2Button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				gameEnvironment.getEnemyMonsters(2);
+				GameRunner.launchBattleScreen(gameEnvironment);
+				frame.dispose();
+			}
+		});
+		battle2Button.setBounds(130, 42, 110, 48);
+		battleButtonPanel.add(battle2Button);
+		
+		JButton battle3Button = new JButton("Hard Fight");
+		battle3Button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				gameEnvironment.getEnemyMonsters(3);
+				GameRunner.launchBattleScreen(gameEnvironment);
+				frame.dispose();
+			}
+		});
+		battle3Button.setBounds(250, 42, 110, 48);
+		battleButtonPanel.add(battle3Button);
+		
+		JLabel lblNewLabel = new JLabel("The difficulty of the fight will determine how much gold you will recieve. \r\n");
+		lblNewLabel.setBounds(10, 100, 350, 38);
+		battleButtonPanel.add(lblNewLabel);
 		
 		JPanel monsterPartyPanel = new JPanel();
 		monsterPartyPanel.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Party", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
@@ -319,26 +357,21 @@ public class MainScreen {
 		
 		JPanel randomEventPanel = new JPanel();
 		randomEventPanel.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "?", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		randomEventPanel.setLayout(null);
 		GridBagConstraints gbc_randomEventPanel = new GridBagConstraints();
 		gbc_randomEventPanel.fill = GridBagConstraints.BOTH;
 		gbc_randomEventPanel.insets = new Insets(0, 0, 5, 0);
 		gbc_randomEventPanel.gridx = 1;
 		gbc_randomEventPanel.gridy = 2;
 		frame.getContentPane().add(randomEventPanel, gbc_randomEventPanel);
-		GridBagLayout gbl_randomEventPanel = new GridBagLayout();
-		gbl_randomEventPanel.columnWidths = new int[]{353, 0};
-		gbl_randomEventPanel.rowHeights = new int[]{143, 0};
-		gbl_randomEventPanel.columnWeights = new double[]{0.0, Double.MIN_VALUE};
-		gbl_randomEventPanel.rowWeights = new double[]{0.0, Double.MIN_VALUE};
-		randomEventPanel.setLayout(gbl_randomEventPanel);
 		
-		JLabel lblNewLabel_2 = new JLabel("New label");
-		lblNewLabel_2.setFont(new Font("Bell MT", Font.PLAIN, 12));
-		GridBagConstraints gbc_lblNewLabel_2 = new GridBagConstraints();
-		gbc_lblNewLabel_2.fill = GridBagConstraints.BOTH;
-		gbc_lblNewLabel_2.gridx = 0;
-		gbc_lblNewLabel_2.gridy = 0;
-		randomEventPanel.add(lblNewLabel_2, gbc_lblNewLabel_2);
+		JButton randomEventButton = new JButton("Random Event");
+		randomEventButton.setBounds(137, 76, 99, 42);
+		randomEventPanel.add(randomEventButton);
+		
+		JLabel lblYourInstinctsTell = new JLabel("Your instincts tell you something isn't quite right. Stray off the path?\r\n");
+		lblYourInstinctsTell.setBounds(10, 28, 350, 38);
+		randomEventPanel.add(lblYourInstinctsTell);
 		
 		JPanel itemPanel = new JPanel();
 		itemPanel.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Inventory", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
@@ -447,5 +480,4 @@ public class MainScreen {
 		gbc_shopBuyButton.gridy = 0;
 		shopPanel.add(shopBuyButton, gbc_shopBuyButton);
 	}
-
 }

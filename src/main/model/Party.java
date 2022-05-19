@@ -5,7 +5,19 @@ import java.util.ArrayList;
 public class Party {
 	
 	private ArrayList<Monster> partyList;
+	private int currentFighterIndex = 0;
 	
+	
+	public int getCurrentFighterIndex() {
+		return currentFighterIndex;
+	}
+
+
+	public void setCurrentFighterIndex(int currentFighterIndex) {
+		this.currentFighterIndex = currentFighterIndex;
+	}
+
+
 	public Party(Monster monster) {
 		ArrayList<Monster> partyList = new ArrayList<Monster>();
 		partyList.add(monster);
@@ -23,6 +35,9 @@ public class Party {
 
 	public String getName(int i) {
 		if (i < this.partyList.size()) {
+			if (this.partyList.get(i).getCurrentHealth() <= 0) {
+				return this.partyList.get(i).getName() + " (Dead)";
+			}
 			return this.partyList.get(i).getName();
 		} else {
 			return "Empty Slot";
@@ -51,6 +66,15 @@ public class Party {
 		} else {
 			return "";
 		}
+	}
+	
+	public boolean incrementCurrentFighter() {
+		this.currentFighterIndex++;
+		
+		if (this.currentFighterIndex >= this.getSize()) {
+			return false;
+		}
+		return true;
 	}
 
 	public void addMonster(Monster m) {

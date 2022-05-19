@@ -3,8 +3,10 @@ package main.controller;
 import java.util.ArrayList;
 
 import main.model.Elf;
+import main.model.Human;
 import main.model.Monster;
 import main.model.Orc;
+import main.view.BattleScreen;
 import main.view.MainScreen;
 import main.view.SetupScreen;
 import main.view.ShopScreen;
@@ -17,7 +19,7 @@ public class GameRunner {
 		ArrayList<Monster> startingList = new ArrayList<Monster>();
 		startingList.add(new Orc());
 		startingList.add(new Elf());
-		startingList.add(new Orc());
+		startingList.add(new Human());
 		SetupScreen setupScreen = new SetupScreen(gameEnvironment, startingList);
 	}
 	
@@ -29,9 +31,15 @@ public class GameRunner {
 		ShopScreen shopScreen = new ShopScreen(gameEnvironment);
 	}
 	
+	public static void launchBattleScreen(GameEnvironment gameEnvironment) {
+		BattleScreen battleScreen = new BattleScreen(gameEnvironment);	
+	}
+	
 	
 	public static void main(String args[]) {
 		GameEnvironment gameEnvironment = new GameEnvironment();
 		setup(gameEnvironment);					
 	}
+
+	
 }

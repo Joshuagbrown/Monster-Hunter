@@ -154,19 +154,19 @@ public class ShopScreen {
 		frmTheShop.getContentPane().add(lblNewLabel);
 		
 		JLabel lblNewLabel_13 = new JLabel("Items:");
-		lblNewLabel_13.setBounds(6, 214, 61, 16);
+		lblNewLabel_13.setBounds(6, 243, 61, 16);
 		frmTheShop.getContentPane().add(lblNewLabel_13);
 		
 		JLabel lblNewLabel_21 = new JLabel("Heal Amount +20");
-		lblNewLabel_21.setBounds(239, 235, 130, 16);
+		lblNewLabel_21.setBounds(239, 264, 130, 16);
 		frmTheShop.getContentPane().add(lblNewLabel_21);
 		
 		JLabel lblNewLabel_22 = new JLabel("Damage +20");
-		lblNewLabel_22.setBounds(239, 266, 111, 16);
+		lblNewLabel_22.setBounds(239, 295, 111, 16);
 		frmTheShop.getContentPane().add(lblNewLabel_22);
 		
 		JLabel lblNewLabel_23 = new JLabel("Health = Max Health");
-		lblNewLabel_23.setBounds(239, 291, 143, 26);
+		lblNewLabel_23.setBounds(239, 320, 143, 26);
 		frmTheShop.getContentPane().add(lblNewLabel_23);
 		
 		JLabel lblNewLabel_29 = new JLabel("Quantity");
@@ -304,39 +304,39 @@ public class ShopScreen {
 		frmTheShop.getContentPane().add(lblNewLabel_9);
 		
 		JLabel lblNewLabel_26 = new JLabel("Healing Potion");
-		lblNewLabel_26.setBounds(6, 235, 99, 16);
+		lblNewLabel_26.setBounds(6, 264, 99, 16);
 		frmTheShop.getContentPane().add(lblNewLabel_26);
 		
 		JLabel lblNewLabel_27 = new JLabel("Damage Potion");
-		lblNewLabel_27.setBounds(6, 266, 99, 16);
+		lblNewLabel_27.setBounds(6, 295, 99, 16);
 		frmTheShop.getContentPane().add(lblNewLabel_27);
 		
 		JLabel lblNewLabel_28 = new JLabel("Medical Kit");
-		lblNewLabel_28.setBounds(6, 296, 99, 16);
+		lblNewLabel_28.setBounds(6, 325, 99, 16);
 		frmTheShop.getContentPane().add(lblNewLabel_28);
 		
 		JButton btnNewButton = new JButton("$200");
-		btnNewButton.setBounds(91, 229, 74, 29);
+		btnNewButton.setBounds(91, 258, 74, 29);
 		frmTheShop.getContentPane().add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("$300");
-		btnNewButton_1.setBounds(91, 260, 74, 29);
+		btnNewButton_1.setBounds(91, 289, 74, 29);
 		frmTheShop.getContentPane().add(btnNewButton_1);
 		
 		JButton btnNewButton_2 = new JButton("$400");
-		btnNewButton_2.setBounds(91, 291, 74, 29);
+		btnNewButton_2.setBounds(91, 320, 74, 29);
 		frmTheShop.getContentPane().add(btnNewButton_2);
 		
 		JButton btnNewButton_3 = new JButton("$100");
-		btnNewButton_3.setBounds(164, 229, 73, 29);
+		btnNewButton_3.setBounds(164, 258, 73, 29);
 		frmTheShop.getContentPane().add(btnNewButton_3);
 		
 		JButton btnNewButton_4 = new JButton("$200");
-		btnNewButton_4.setBounds(164, 260, 73, 29);
+		btnNewButton_4.setBounds(164, 289, 73, 29);
 		frmTheShop.getContentPane().add(btnNewButton_4);
 		
 		JButton btnNewButton_5 = new JButton("$200");
-		btnNewButton_5.setBounds(164, 291, 73, 29);
+		btnNewButton_5.setBounds(164, 320, 73, 29);
 		frmTheShop.getContentPane().add(btnNewButton_5);
 		
 		JButton btnNewButton_6 = new JButton("Exit");

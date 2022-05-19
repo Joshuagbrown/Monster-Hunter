@@ -16,13 +16,13 @@ public abstract class Monster {
 	
 	private int sellPrice;
 
-	public Monster(String name, int maxHealth, int damage, int healAmount, int currentHealth, int purchasePrice, int sellPrice) {
+	public Monster(String name, int maxHealth, int damage, int healAmount, int purchasePrice, int sellPrice) {
 		super();
 		this.name = name;
 		this.maxHealth = maxHealth;
 		this.damage = damage;
 		this.healAmount = healAmount;
-		this.currentHealth = currentHealth;
+		this.currentHealth = maxHealth;
 		this.purchasePrice = purchasePrice;
 		this.sellPrice = sellPrice;
 	}
