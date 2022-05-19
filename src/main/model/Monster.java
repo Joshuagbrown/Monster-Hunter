@@ -100,6 +100,9 @@ public abstract class Monster {
 
 	public void setCurrentHealth(int currentHealth) {
 		this.currentHealth = currentHealth;
+		if (this.currentHealth > this.maxHealth) {
+			this.currentHealth = this.maxHealth;
+		}
 	}
 
 }

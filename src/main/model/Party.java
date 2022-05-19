@@ -36,7 +36,7 @@ public class Party {
 	public String getName(int i) {
 		if (i < this.partyList.size()) {
 			if (this.partyList.get(i).getCurrentHealth() <= 0) {
-				return this.partyList.get(i).getName() + " (Dead)";
+				return this.partyList.get(i).getName() + " (Faint)";
 			}
 			return this.partyList.get(i).getName();
 		} else {

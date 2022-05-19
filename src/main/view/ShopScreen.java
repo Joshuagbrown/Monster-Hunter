@@ -267,6 +267,9 @@ public class ShopScreen {
 		});
 		wizardBuyButton.setBounds(124, 142, 74, 29);
 		frmTheShop.getContentPane().add(wizardBuyButton);
+		if (gameEnvironment.getDay() < 3) {
+			wizardBuyButton.setEnabled(false);
+		}
 		
 		JButton dragonBuyButton = new JButton("$2000");
 		dragonBuyButton.addActionListener(new ActionListener() {
@@ -282,6 +285,9 @@ public class ShopScreen {
 		});
 		dragonBuyButton.setBounds(124, 171, 74, 29);
 		frmTheShop.getContentPane().add(dragonBuyButton);
+		if (gameEnvironment.getDay() < 5) {
+			dragonBuyButton.setEnabled(false);
+		}
 		
 		JLabel lblNewLabel_5 = new JLabel("Gremlin");
 		lblNewLabel_5.setBounds(6, 57, 61, 16);

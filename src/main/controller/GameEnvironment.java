@@ -21,7 +21,7 @@ public class GameEnvironment {
 	
 	private int difficulty;
 	private int totalDays;
-	private int day;
+	private int day = 1;
 	
 	private Party party;
 	private Party enemyParty = new Party(new Gremlin());
@@ -156,15 +156,25 @@ public class GameEnvironment {
 		//TODO - add some stuff here
 		
 		endDay();
+		GameRunner.displayLoss();
+
 	}
 	
 	public void winFight() {
-		
+
 		//TODO - add some stuff here
 		
 		this.player.setGold(this.player.getGold() + 100);
 		
 		endDay();
+		GameRunner.displayWin();
+
+	}
+	
+	public void healMonsters() {
+		for (Monster m : this.party.getPartyList()) {
+			m.setCurrentHealth(m.getCurrentHealth() + m.getHealAmount());
+		}
 	}
 	
 
@@ -175,11 +185,13 @@ public class GameEnvironment {
 //			gameOver();
 		}
 		nightRandomEvent();
+		healMonsters();
 	}
 
 	private void nightRandomEvent() {
-//		Random 
+		Random random = new Random();
 		
+		int randomValue = random.nextInt(3);
 	}
 
 	public Party getEnemyParty() {

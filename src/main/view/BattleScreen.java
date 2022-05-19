@@ -68,11 +68,11 @@ public class BattleScreen {
 		lblNewLabel_11.setBounds(607, 127, 130, 16);
 		frmBattle.getContentPane().add(lblNewLabel_11);
 		
-		JLabel lblNewLabel_18 = new JLabel("...");
+		JLabel lblNewLabel_18 = new JLabel(Integer.toString(gameEnvironment.getParty().getMonsterAtIndex(gameEnvironment.getParty().getCurrentFighterIndex()).getCurrentHealth()));
 		lblNewLabel_18.setBounds(426, 148, 61, 16);
 		frmBattle.getContentPane().add(lblNewLabel_18);
 		
-		JLabel lblNewLabel_19 = new JLabel("...");
+		JLabel lblNewLabel_19 = new JLabel(Integer.toString(gameEnvironment.getEnemyParty().getMonsterAtIndex(gameEnvironment.getEnemyParty().getCurrentFighterIndex()).getCurrentHealth()));
 		lblNewLabel_19.setBounds(607, 148, 61, 16);
 		frmBattle.getContentPane().add(lblNewLabel_19);
 		
@@ -104,7 +104,7 @@ public class BattleScreen {
 		lblNewLabel_22.setBounds(426, 180, 61, 16);
 		frmBattle.getContentPane().add(lblNewLabel_22);
 		
-		JLabel lblNewLabel_23 = new JLabel("...");
+		JLabel lblNewLabel_23 = new JLabel(Integer.toString(gameEnvironment.getParty().getMonsterAtIndex(gameEnvironment.getParty().getCurrentFighterIndex()).getDamage()));
 		lblNewLabel_23.setBounds(426, 216, 61, 16);
 		frmBattle.getContentPane().add(lblNewLabel_23);
 		
@@ -112,7 +112,7 @@ public class BattleScreen {
 		lblNewLabel_24.setBounds(607, 180, 61, 16);
 		frmBattle.getContentPane().add(lblNewLabel_24);
 		
-		JLabel lblNewLabel_25 = new JLabel("...");
+		JLabel lblNewLabel_25 = new JLabel(Integer.toString(gameEnvironment.getEnemyParty().getMonsterAtIndex(gameEnvironment.getEnemyParty().getCurrentFighterIndex()).getDamage()));
 		lblNewLabel_25.setBounds(607, 216, 61, 16);
 		frmBattle.getContentPane().add(lblNewLabel_25);
 		
@@ -545,6 +545,14 @@ public class BattleScreen {
 		});
 		surrenderButton.setBounds(987, 294, 85, 21);
 		frmBattle.getContentPane().add(surrenderButton);
+		
+		JLabel lblNewLabel = new JLabel(gameEnvironment.getParty().getMonsterAtIndex(gameEnvironment.getParty().getCurrentFighterIndex()).getName());
+		lblNewLabel.setBounds(426, 100, 85, 13);
+		frmBattle.getContentPane().add(lblNewLabel);
+		
+		JLabel lblNewLabel_1 = new JLabel(gameEnvironment.getEnemyParty().getMonsterAtIndex(gameEnvironment.getEnemyParty().getCurrentFighterIndex()).getName());
+		lblNewLabel_1.setBounds(607, 100, 88, 13);
+		frmBattle.getContentPane().add(lblNewLabel_1);
 		
 		
 		
