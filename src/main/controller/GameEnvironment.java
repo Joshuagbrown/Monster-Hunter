@@ -15,6 +15,10 @@ import main.model.Wizard;
 import main.view.MainScreen;
 import main.view.SetupScreen;
 
+/**
+Game environment holds the current status of the game
+@author Josh Brown
+*/
 public class GameEnvironment {
 
 	private Player player;
@@ -26,41 +30,91 @@ public class GameEnvironment {
 	private Party party;
 	private Party enemyParty = new Party(new Gremlin());
 	
+/**
+Creates a new player in the game environment
+@author Josh Brown
+*/
 	public GameEnvironment() {
 		this.player = new Player();
 	}
 	
+/**
+Takes the players entered name, days, chosen Monster and difficulty level and sets up the game. Setting player stats in player class. 
+@param name the player’s game name
+@param days the amount of days the player has selected to play
+@param monster the players initial monster for their team 
+@param difficulty the difficulty level the player has chosen to play
+@return a Boolean of whether the chosen name is acceptable
+@author Josh Brown 
+*/
+
 	public boolean setupGame(String name, int days, Monster monster, int difficulty) {
 		this.party = new Party(monster);
 		this.difficulty = difficulty;
 		this.totalDays = days;
 		return player.setup(name);
 	}
-	
+
+
+/**
+A getter for the current day it is in the game
+@return the current day in the game
+@author Josh Brown
+*/
 	public int getDay() {
 		return this.day;
 	}
-	
+
+/**
+A getter for the total amount of days the player has selected for this game
+@return the total number of days in the game
+@author Josh Brown
+*/
 	public int getTotalDays() {
 		return this.totalDays;
 	}
 
+/**
+A getter that gets the player object from player class and all the relevant stats of the player
+@return a player object from the player class (the player for that particular game)
+@author Josh Brown
+*/
 	public Player getPlayer() {
 		return player;
 	}
 
+/**
+A setter method that sets the player to be an object player
+@author Josh Brown
+*/
 	public void setPlayer(Player player) {
 		this.player = player;
 	}
 
+/** 
+A getter method that gets the current party of monsters a player holds
+@return the current party of monsters
+@author Josh Brown
+*/
 	public Party getParty() {
 		return party;
 	}
 
+/**
+A setter method which takes a party as a parameter and sets the party to this instance of party
+@param party and instance of the class party 
+@author Josh Brown
+*/
 	public void setParty(Party party) {
 		this.party = party;
 	}
 
+/**
+Adds a monster to the players party is they have enough room in their party and enough money. Takes the gold down by the purchase price of the monster. Returns True is a successful purchase and False otherwise. 
+@param m a monster object from the monster class one of the creature options
+@ return a Boolean indicating a successful purchase or not
+@author Josh Brown
+*/
 	public boolean buyMonster(Monster m) {
 		if (this.player.getGold() >= m.getPurchasePrice() && this.party.getSize() < 5) {
 			this.player.setGold(this.player.getGold() - m.getPurchasePrice());
@@ -69,7 +123,13 @@ public class GameEnvironment {
 		}
 		return false;
 	}
-	
+
+/**
+Sells a monster by deleting it form the monster party and increasing the gold by the relevant amount
+@index takes the index of the monster to be sold 
+@return a Boolean indicating a successful sale or not
+@author Josh Brown
+*/
 	public boolean sellMonster(int index) {
 		if (this.party.getSize() > index) {
 			Monster m = this.getParty().getMonsterAtIndex(index);
@@ -79,7 +139,12 @@ public class GameEnvironment {
 		}
 		return false;
 	}
-	
+
+/**
+Gets the monsters in the enemy party from the battle the player is playing. Sets the party size using random numbers and creates the monsters in it based on this factor. 
+@param battlehChoice the battle the player has chosen with the select group of monsters
+@author Josh Brown
+*/
 	public void getEnemyMonsters(int battleChoice) {
 		
 		this.enemyParty.setPartyList(new ArrayList<Monster>());
@@ -124,7 +189,12 @@ public class GameEnvironment {
 				
 		
 	}
-	
+
+/**
+Creates a fight between 2 monsters, showing if your monster wins or loses and depletes current health by the relevant value. 
+@return a Boolean indicating a successful fight or not 
+@ author Josh Brown
+*/
 	public boolean fight() {
 		Monster playerFighter = this.party.getMonsterAtIndex(this.party.getCurrentFighterIndex());
 		Monster enemyFighter = this.enemyParty.getMonsterAtIndex(this.enemyParty.getCurrentFighterIndex());
@@ -150,7 +220,9 @@ public class GameEnvironment {
 		return false;
 		
 	}
-	
+
+/**
+*/
 	public void loseFight() {
 		
 		//TODO - add some stuff here
@@ -159,7 +231,8 @@ public class GameEnvironment {
 		GameRunner.displayLoss();
 
 	}
-	
+/**
+*/	
 	public void winFight() {
 
 		//TODO - add some stuff here
@@ -170,7 +243,11 @@ public class GameEnvironment {
 		GameRunner.displayWin();
 
 	}
-	
+
+/**
+Sets the current health of a monster to increase by the heal amount
+@author Josh Brown
+*/
 	public void healMonsters() {
 		for (Monster m : this.party.getPartyList()) {
 			m.setCurrentHealth(m.getCurrentHealth() + m.getHealAmount());
@@ -178,7 +255,10 @@ public class GameEnvironment {
 	}
 	
 
-	
+/**
+Adds another day to the game, runs the overnight even where monsters are healed to max health and the random night events
+@author Josh Brown
+*/
 	public void endDay() {
 		this.day++;
 		if (this.getTotalDays() < this.day) {
@@ -188,16 +268,28 @@ public class GameEnvironment {
 		healMonsters();
 	}
 
+/**
+*/
 	private void nightRandomEvent() {
 		Random random = new Random();
 		
 		int randomValue = random.nextInt(3);
 	}
 
+/**
+A getter method that returns the monster party of the enemy team 
+@return the enemy party
+@author Josh Brown
+*/
 	public Party getEnemyParty() {
 		return enemyParty;
 	}
 
+/**
+A setter method that sets the party of monsters for the enemy team
+@param enemyParty is the enemy party
+@author Josh Brown
+*/
 	public void setEnemyParty(Party enemyParty) {
 		this.enemyParty = enemyParty;
 	}
