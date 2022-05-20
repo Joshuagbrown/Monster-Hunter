@@ -31,6 +31,10 @@ import javax.swing.border.MatteBorder;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.FlowLayout;
+/**
+Class MainScreen that implements all the swing elements of the screen shown when the player is on the Main game screen
+@author Josh Brown
+*/
 
 public class MainScreen {
 
