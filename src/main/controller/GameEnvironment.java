@@ -26,6 +26,8 @@ public class GameEnvironment {
 	private Party party;
 	private Party enemyParty = new Party(new Gremlin());
 	
+	private String randomEventDesc = "";
+	
 	public GameEnvironment() {
 		this.player = new Player();
 	}
@@ -177,22 +179,61 @@ public class GameEnvironment {
 		}
 	}
 	
-
-	
-	public void endDay() {
+	public boolean endDay() {
 		this.day++;
 		if (this.getTotalDays() < this.day) {
-//			gameOver();
+			return true;
 		}
 		nightRandomEvent();
 		healMonsters();
+		return false;
 	}
 
 	private void nightRandomEvent() {
 		Random random = new Random();
 		
-		int randomValue = random.nextInt(3);
+		int randomValue = random.nextInt(10 - this.difficulty);
+		
+		if (randomValue < 3) {
+			if (this.party.getSize() > 1) {
+				monsterLeaves();
+				return;
+			}
+		} else if (randomValue < 6) {
+			if (this.party.getSize() < 5) {
+				monsterJoins();
+				return;
+			}
+		} else {
+			monsterLevels();
+			return;
+		}
+		this.randomEventDesc = "";
 	}
+	
+	
+	public String getRandomEventDesc() {
+		return randomEventDesc;
+	}
+
+	public void setRandomEventDesc(String randomEventDesc) {
+		this.randomEventDesc = randomEventDesc;
+	}
+
+	public void monsterLeaves() {
+		this.randomEventDesc = "Monster left";
+	}
+	
+	public void monsterJoins() {
+		this.randomEventDesc = "Monster joins";
+
+	}
+	
+	public void monsterLevels() {
+		this.randomEventDesc = "Monster levels";
+
+	}
+	
 
 	public Party getEnemyParty() {
 		return enemyParty;

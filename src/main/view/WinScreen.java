@@ -11,6 +11,7 @@ import main.controller.GameRunner;
 import java.awt.BorderLayout;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import javax.swing.Timer;
 import java.awt.event.ActionEvent;
 
 public class WinScreen {
@@ -24,6 +25,7 @@ public class WinScreen {
 	public WinScreen() {
 		initialize();
 		frame.setVisible(true);
+		new Timer(5_000, (e) -> { frame.setVisible(false); frame.dispose(); }).start();
 	}
 
 	/**

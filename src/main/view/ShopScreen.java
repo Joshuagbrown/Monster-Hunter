@@ -33,16 +33,6 @@ public class ShopScreen {
 
 	private JFrame frmTheShop;
 	private JTextField textField;
-	private JTextField txtNo;
-	private JTextField txtNo_1;
-	private JTextField txtNo_2;
-	private JTextField txtYes;
-	private JTextField txtYes_1;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
-	private JTextField textField_5;
 	private GameEnvironment gameEnvironment;
 	private JTextField txtEnterMonsterNickname;
 
@@ -67,7 +57,7 @@ public class ShopScreen {
 		frmTheShop.getContentPane().setLayout(null);
 		
 		JLabel lblNewLabel_1 = new JLabel(String.format("GOLD: %s", gameEnvironment.getPlayer().getGold()));
-		lblNewLabel_1.setBounds(463, 6, 111, 16);
+		lblNewLabel_1.setBounds(450, 33, 111, 16);
 		frmTheShop.getContentPane().add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_3 = new JLabel("Monsters:");
@@ -77,10 +67,6 @@ public class ShopScreen {
 		JLabel lblNewLabel_4 = new JLabel("Buy:");
 		lblNewLabel_4.setBounds(150, 6, 61, 16);
 		frmTheShop.getContentPane().add(lblNewLabel_4);
-		
-		JLabel lblNewLabel_10 = new JLabel("Locked?");
-		lblNewLabel_10.setBounds(390, 38, 61, 16);
-		frmTheShop.getContentPane().add(lblNewLabel_10);
 		
 		txtEnterMonsterNickname = new JTextField();
 		txtEnterMonsterNickname.setForeground(Color.BLACK);
@@ -94,63 +80,32 @@ public class ShopScreen {
 		nicknameErrorlbl.setBounds(112, 22, 99, 13);
 		frmTheShop.getContentPane().add(nicknameErrorlbl);
 		
-		
-		txtNo = new JTextField();
-		txtNo.setText("No");
-		txtNo.setBounds(390, 55, 61, 26);
-		frmTheShop.getContentPane().add(txtNo);
-		txtNo.setColumns(10);
-		
-		txtNo_1 = new JTextField();
-		txtNo_1.setText("No");
-		txtNo_1.setBounds(390, 85, 61, 26);
-		frmTheShop.getContentPane().add(txtNo_1);
-		txtNo_1.setColumns(10);
-		
-		txtNo_2 = new JTextField();
-		txtNo_2.setText("No");
-		txtNo_2.setBounds(390, 115, 61, 26);
-		frmTheShop.getContentPane().add(txtNo_2);
-		txtNo_2.setColumns(10);
-		
-		txtYes = new JTextField();
-		txtYes.setText("Yes");
-		txtYes.setBounds(390, 144, 61, 26);
-		frmTheShop.getContentPane().add(txtYes);
-		txtYes.setColumns(10);
-		
-		txtYes_1 = new JTextField();
-		txtYes_1.setText("Yes");
-		txtYes_1.setBounds(390, 173, 61, 26);
-		frmTheShop.getContentPane().add(txtYes_1);
-		txtYes_1.setColumns(10);
-		
 		JLabel lblNewLabel_11 = new JLabel("Max Health, Damage,");
-		lblNewLabel_11.setBounds(239, 20, 143, 16);
+		lblNewLabel_11.setBounds(239, 19, 143, 16);
 		frmTheShop.getContentPane().add(lblNewLabel_11);
 		
-		JLabel lblNewLabel_12 = new JLabel("30,5,5");
-		lblNewLabel_12.setBounds(243, 60, 55, 16);
-		frmTheShop.getContentPane().add(lblNewLabel_12);
+		JLabel gremlinMaxHealth = new JLabel(Integer.toString(new Gremlin().getMaxHealth()));
+		gremlinMaxHealth.setBounds(243, 60, 55, 16);
+		frmTheShop.getContentPane().add(gremlinMaxHealth);
 		
-		JLabel lblNewLabel_14 = new JLabel("50,10,5");
-		lblNewLabel_14.setBounds(243, 90, 61, 16);
-		frmTheShop.getContentPane().add(lblNewLabel_14);
+		JLabel elfMaxHealth = new JLabel(Integer.toString(new Elf().getMaxHealth()));
+		elfMaxHealth.setBounds(243, 90, 61, 16);
+		frmTheShop.getContentPane().add(elfMaxHealth);
 		
-		JLabel lblNewLabel_15 = new JLabel("100,5,2");
-		lblNewLabel_15.setBounds(243, 120, 61, 16);
-		frmTheShop.getContentPane().add(lblNewLabel_15);
+		JLabel orcMaxHealth = new JLabel(Integer.toString(new Orc().getMaxHealth()));
+		orcMaxHealth.setBounds(243, 120, 61, 16);
+		frmTheShop.getContentPane().add(orcMaxHealth);
 		
-		JLabel lblNewLabel_16 = new JLabel("50,20,30");
-		lblNewLabel_16.setBounds(243, 149, 61, 16);
-		frmTheShop.getContentPane().add(lblNewLabel_16);
+		JLabel wizardMaxHealth = new JLabel(Integer.toString(new Wizard().getMaxHealth()));
+		wizardMaxHealth.setBounds(243, 149, 61, 16);
+		frmTheShop.getContentPane().add(wizardMaxHealth);
 		
-		JLabel lblNewLabel_17 = new JLabel("80,30,20");
-		lblNewLabel_17.setBounds(243, 178, 61, 16);
-		frmTheShop.getContentPane().add(lblNewLabel_17);
+		JLabel dragonMaxHealth = new JLabel(Integer.toString(new Dragon().getMaxHealth()));
+		dragonMaxHealth.setBounds(243, 178, 61, 16);
+		frmTheShop.getContentPane().add(dragonMaxHealth);
 		
 		JLabel lblNewLabel = new JLabel("Heal Amount");
-		lblNewLabel.setBounds(239, 38, 99, 16);
+		lblNewLabel.setBounds(341, 19, 99, 16);
 		frmTheShop.getContentPane().add(lblNewLabel);
 		
 		JLabel lblNewLabel_13 = new JLabel("Items:");
@@ -169,36 +124,7 @@ public class ShopScreen {
 		lblNewLabel_23.setBounds(239, 320, 143, 26);
 		frmTheShop.getContentPane().add(lblNewLabel_23);
 		
-		JLabel lblNewLabel_29 = new JLabel("Quantity");
-		lblNewLabel_29.setBounds(463, 38, 61, 16);
-		frmTheShop.getContentPane().add(lblNewLabel_29);
-		
-		textField_1 = new JTextField();
-		textField_1.setBounds(463, 55, 61, 26);
-		frmTheShop.getContentPane().add(textField_1);
-		textField_1.setColumns(10);
-		
-		textField_2 = new JTextField();
-		textField_2.setBounds(463, 85, 61, 26);
-		frmTheShop.getContentPane().add(textField_2);
-		textField_2.setColumns(10);
-		
-		textField_3 = new JTextField();
-		textField_3.setBounds(463, 115, 61, 26);
-		frmTheShop.getContentPane().add(textField_3);
-		textField_3.setColumns(10);
-		
-		textField_4 = new JTextField();
-		textField_4.setBounds(463, 144, 61, 26);
-		frmTheShop.getContentPane().add(textField_4);
-		textField_4.setColumns(10);
-		
-		textField_5 = new JTextField();
-		textField_5.setBounds(463, 173, 61, 26);
-		frmTheShop.getContentPane().add(textField_5);
-		textField_5.setColumns(10);
-		
-		JButton gremlinBuyButton = new JButton("$100");
+		JButton gremlinBuyButton = new JButton("$"+Integer.toString(new Gremlin().getPurchasePrice()));
 		gremlinBuyButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Monster m = new Gremlin();
@@ -223,10 +149,20 @@ public class ShopScreen {
 		gremlinBuyButton.setBounds(124, 53, 74, 29);
 		frmTheShop.getContentPane().add(gremlinBuyButton);
 		
-		JButton elfBuyButton = new JButton("$300");
+		JButton elfBuyButton = new JButton("$"+Integer.toString(new Elf().getPurchasePrice()));
 		elfBuyButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (gameEnvironment.buyMonster(new Elf())) {
+				Monster m = new Elf();
+				String nickname = txtEnterMonsterNickname.getText();
+				if (nickname.length() != 0){
+					if (nickname.length() < 3 || nickname.length() > 15) {
+						nicknameErrorlbl.setText("Name must be 3 to 15 chars");
+						return;
+					} else {
+						m.setName(nickname);
+					}
+				}
+				if (gameEnvironment.buyMonster(m)) {
 					frmTheShop.dispose();
 					GameRunner.launchShopScreen(gameEnvironment);
 					//TODO - Buy successful
@@ -238,10 +174,20 @@ public class ShopScreen {
 		elfBuyButton.setBounds(124, 83, 74, 29);
 		frmTheShop.getContentPane().add(elfBuyButton);
 		
-		JButton orcBuyButton = new JButton("$500");
+		JButton orcBuyButton = new JButton("$"+Integer.toString(new Orc().getPurchasePrice()));
 		orcBuyButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (gameEnvironment.buyMonster(new Orc())) {
+				Monster m = new Orc();
+				String nickname = txtEnterMonsterNickname.getText();
+				if (nickname.length() != 0){
+					if (nickname.length() < 3 || nickname.length() > 15) {
+						nicknameErrorlbl.setText("Name must be 3 to 15 chars");
+						return;
+					} else {
+						m.setName(nickname);
+					}
+				}
+				if (gameEnvironment.buyMonster(m)) {
 					frmTheShop.dispose();
 					GameRunner.launchShopScreen(gameEnvironment);
 					//TODO - Buy successful
@@ -253,10 +199,20 @@ public class ShopScreen {
 		orcBuyButton.setBounds(124, 113, 74, 29);
 		frmTheShop.getContentPane().add(orcBuyButton);
 		
-		JButton wizardBuyButton = new JButton("$1000");
+		JButton wizardBuyButton = new JButton("$"+Integer.toString(new Wizard().getPurchasePrice()));
 		wizardBuyButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (gameEnvironment.buyMonster(new Wizard())) {
+				Monster m = new Wizard();
+				String nickname = txtEnterMonsterNickname.getText();
+				if (nickname.length() != 0){
+					if (nickname.length() < 3 || nickname.length() > 15) {
+						nicknameErrorlbl.setText("Name must be 3 to 15 chars");
+						return;
+					} else {
+						m.setName(nickname);
+					}
+				}
+				if (gameEnvironment.buyMonster(m)) {
 					frmTheShop.dispose();
 					GameRunner.launchShopScreen(gameEnvironment);
 					//TODO - Buy successful
@@ -271,10 +227,20 @@ public class ShopScreen {
 			wizardBuyButton.setEnabled(false);
 		}
 		
-		JButton dragonBuyButton = new JButton("$2000");
+		JButton dragonBuyButton = new JButton("$"+Integer.toString(new Dragon().getPurchasePrice()));
 		dragonBuyButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (gameEnvironment.buyMonster(new Dragon())) {
+				Monster m = new Dragon();
+				String nickname = txtEnterMonsterNickname.getText();
+				if (nickname.length() != 0){
+					if (nickname.length() < 3 || nickname.length() > 15) {
+						nicknameErrorlbl.setText("Name must be 3 to 15 chars");
+						return;
+					} else {
+						m.setName(nickname);
+					}
+				}
+				if (gameEnvironment.buyMonster(m)) {
 					frmTheShop.dispose();
 					GameRunner.launchShopScreen(gameEnvironment);
 					//TODO - Buy successful
@@ -360,7 +326,7 @@ public class ShopScreen {
 		frmTheShop.getContentPane().add(lblNewLabel_18_4_1);
 		
 		JLabel lblNewLabel_18_2_1 = new JLabel("New label");
-		lblNewLabel_18_2_1.setBounds(507, 261, 81, 26);
+		lblNewLabel_18_2_1.setBounds(507, 259, 81, 26);
 		frmTheShop.getContentPane().add(lblNewLabel_18_2_1);
 		
 		JLabel lblNewLabel_18_3_1 = new JLabel("New label");
@@ -368,15 +334,15 @@ public class ShopScreen {
 		frmTheShop.getContentPane().add(lblNewLabel_18_3_1);
 		
 		JLabel lblNewLabel_18_1_1 = new JLabel("New label");
-		lblNewLabel_18_1_1.setBounds(520, 230, 81, 26);
+		lblNewLabel_18_1_1.setBounds(507, 238, 81, 26);
 		frmTheShop.getContentPane().add(lblNewLabel_18_1_1);
 		
 		JLabel lblNewLabel_18_5 = new JLabel("New label");
-		lblNewLabel_18_5.setBounds(416, 230, 81, 26);
+		lblNewLabel_18_5.setBounds(416, 238, 81, 26);
 		frmTheShop.getContentPane().add(lblNewLabel_18_5);
 		
 		JLabel lblNewLabel_18_4_1_1 = new JLabel("New label");
-		lblNewLabel_18_4_1_1.setBounds(517, 291, 81, 26);
+		lblNewLabel_18_4_1_1.setBounds(507, 289, 81, 26);
 		frmTheShop.getContentPane().add(lblNewLabel_18_4_1_1);
 		
 		JPanel monsterPartyPanel = new JPanel();
@@ -560,6 +526,46 @@ public class ShopScreen {
 		lblNewLabel_5_1.setFont(new Font("Tahoma", Font.ITALIC, 8));
 		lblNewLabel_5_1.setBounds(6, 32, 99, 16);
 		frmTheShop.getContentPane().add(lblNewLabel_5_1);
+		
+		JLabel gremlinDamageLabe = new JLabel(Integer.toString(new Gremlin().getDamage()));
+		gremlinDamageLabe.setBounds(297, 62, 55, 16);
+		frmTheShop.getContentPane().add(gremlinDamageLabe);
+		
+		JLabel gremlinHealLabel = new JLabel(Integer.toString(new Gremlin().getHealAmount()));
+		gremlinHealLabel.setBounds(356, 62, 55, 16);
+		frmTheShop.getContentPane().add(gremlinHealLabel);
+		
+		JLabel elfDamageLabel = new JLabel(Integer.toString(new Elf().getDamage()));
+		elfDamageLabel.setBounds(295, 92, 55, 16);
+		frmTheShop.getContentPane().add(elfDamageLabel);
+		
+		JLabel elfHealLabel = new JLabel(Integer.toString(new Elf().getHealAmount()));
+		elfHealLabel.setBounds(356, 92, 55, 16);
+		frmTheShop.getContentPane().add(elfHealLabel);
+		
+		JLabel orcDamageLabel = new JLabel(Integer.toString(new Orc().getDamage()));
+		orcDamageLabel.setBounds(295, 122, 55, 16);
+		frmTheShop.getContentPane().add(orcDamageLabel);
+		
+		JLabel orcHealLabel = new JLabel(Integer.toString(new Orc().getHealAmount()));
+		orcHealLabel.setBounds(356, 122, 55, 16);
+		frmTheShop.getContentPane().add(orcHealLabel);
+		
+		JLabel wizardDamageLabel = new JLabel(Integer.toString(new Wizard().getDamage()));
+		wizardDamageLabel.setBounds(295, 151, 55, 16);
+		frmTheShop.getContentPane().add(wizardDamageLabel);
+		
+		JLabel wizardHealLabel = new JLabel(Integer.toString(new Wizard().getHealAmount()));
+		wizardHealLabel.setBounds(356, 151, 55, 16);
+		frmTheShop.getContentPane().add(wizardHealLabel);
+		
+		JLabel dragonDamageLabel = new JLabel(Integer.toString(new Dragon().getDamage()));
+		dragonDamageLabel.setBounds(295, 180, 55, 16);
+		frmTheShop.getContentPane().add(dragonDamageLabel);
+		
+		JLabel dragonHealLabel = new JLabel(Integer.toString(new Dragon().getHealAmount()));
+		dragonHealLabel.setBounds(356, 180, 55, 16);
+		frmTheShop.getContentPane().add(dragonHealLabel);
 		
 		if (gameEnvironment.getParty().getSize() > 1) {
 			JButton sellButton1 = new JButton(String.format("Sell for $%s", gameEnvironment.getParty().getMonsterAtIndex(0).getSellPrice()));

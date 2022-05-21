@@ -7,6 +7,7 @@ import main.model.Human;
 import main.model.Monster;
 import main.model.Orc;
 import main.view.BattleScreen;
+import main.view.EndScreen;
 import main.view.LossScreen;
 import main.view.MainScreen;
 import main.view.SetupScreen;
@@ -44,6 +45,11 @@ public class GameRunner {
 	
 	public static void displayLoss() {
 		LossScreen lossScreen = new LossScreen();	
+
+	}
+	
+	public static void launchEndScreen(GameEnvironment gameEnvironment) {
+		EndScreen endScreen = new EndScreen(gameEnvironment);	
 
 	}
 	

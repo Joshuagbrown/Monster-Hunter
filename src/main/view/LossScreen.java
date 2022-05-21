@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.Timer;
 
 import main.controller.GameEnvironment;
 import main.controller.GameRunner;
@@ -22,6 +23,7 @@ public class LossScreen {
 	public LossScreen() {
 		initialize();
 		frame.setVisible(true);
+		new Timer(5_000, (e) -> { frame.setVisible(false); frame.dispose(); }).start();
 	}
 
 	/**

@@ -41,6 +41,9 @@ public class MainScreen {
 	 * Create the application.
 	 */
 	public MainScreen(GameEnvironment gameEnvironment) {
+		
+		
+		
 		this.gameEnvironment = gameEnvironment;
 		initialize();
 		frame.setVisible(true);
@@ -355,8 +358,14 @@ public class MainScreen {
 		monster5Heal.setHorizontalAlignment(SwingConstants.CENTER);
 		monster5StatsPanel.add(monster5Heal);
 		
+		String randomTitle = "?";
+		Color randomTitleColor = new Color(255, 255, 255);
+		if (!gameEnvironment.getRandomEventDesc().equals("")) {
+			randomTitle = "RANDOM EVENT OCCURED!";
+			randomTitleColor = new Color(255, 0, 0);
+		}
 		JPanel randomEventPanel = new JPanel();
-		randomEventPanel.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "?", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		randomEventPanel.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, randomTitleColor, new Color(160, 160, 160)), randomTitle, TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		randomEventPanel.setLayout(null);
 		GridBagConstraints gbc_randomEventPanel = new GridBagConstraints();
 		gbc_randomEventPanel.fill = GridBagConstraints.BOTH;
@@ -365,11 +374,7 @@ public class MainScreen {
 		gbc_randomEventPanel.gridy = 2;
 		frame.getContentPane().add(randomEventPanel, gbc_randomEventPanel);
 		
-		JButton randomEventButton = new JButton("Random Event");
-		randomEventButton.setBounds(137, 76, 99, 42);
-		randomEventPanel.add(randomEventButton);
-		
-		JLabel lblYourInstinctsTell = new JLabel("Your instincts tell you something isn't quite right. Stray off the path?\r\n");
+		JLabel lblYourInstinctsTell = new JLabel(gameEnvironment.getRandomEventDesc());
 		lblYourInstinctsTell.setBounds(10, 28, 350, 38);
 		randomEventPanel.add(lblYourInstinctsTell);
 		

@@ -92,7 +92,12 @@ public class BattleScreen {
 					GameRunner.launchBattleScreen(gameEnvironment);
 				} else {
 					frmBattle.dispose();
-					GameRunner.launchMainScreen(gameEnvironment);
+					if (gameEnvironment.getTotalDays() < gameEnvironment.getDay()) {
+						GameRunner.launchEndScreen(gameEnvironment);
+
+					} else {
+						GameRunner.launchMainScreen(gameEnvironment);
+					}
 				}
 				
 			}
@@ -543,7 +548,7 @@ public class BattleScreen {
 				frmBattle.dispose();
 			}
 		});
-		surrenderButton.setBounds(987, 294, 85, 21);
+		surrenderButton.setBounds(965, 294, 107, 21);
 		frmBattle.getContentPane().add(surrenderButton);
 		
 		JLabel lblNewLabel = new JLabel(gameEnvironment.getParty().getMonsterAtIndex(gameEnvironment.getParty().getCurrentFighterIndex()).getName());
