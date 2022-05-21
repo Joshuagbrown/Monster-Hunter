@@ -92,12 +92,7 @@ public class BattleScreen {
 					GameRunner.launchBattleScreen(gameEnvironment);
 				} else {
 					frmBattle.dispose();
-					if (gameEnvironment.getTotalDays() < gameEnvironment.getDay()) {
-						GameRunner.launchEndScreen(gameEnvironment);
-
-					} else {
-						GameRunner.launchMainScreen(gameEnvironment);
-					}
+					GameRunner.launchMainScreen(gameEnvironment);
 				}
 				
 			}

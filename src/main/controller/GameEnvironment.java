@@ -28,6 +28,10 @@ public class GameEnvironment {
 	
 	private String randomEventDesc = "";
 	
+	private boolean easyFightDone = false;
+	private boolean normalFightDone = false;
+	private boolean hardFightDone = false;
+	
 	public GameEnvironment() {
 		this.player = new Player();
 	}
@@ -157,7 +161,6 @@ public class GameEnvironment {
 		
 		//TODO - add some stuff here
 		
-		endDay();
 		GameRunner.displayLoss();
 
 	}
@@ -168,7 +171,6 @@ public class GameEnvironment {
 		
 		this.player.setGold(this.player.getGold() + 100);
 		
-		endDay();
 		GameRunner.displayWin();
 
 	}
@@ -186,7 +188,42 @@ public class GameEnvironment {
 		}
 		nightRandomEvent();
 		healMonsters();
+		this.easyFightDone = false;
+		this.normalFightDone = false;
+		this.hardFightDone = false;
 		return false;
+	}
+
+	public boolean isEasyFightDone() {
+		return easyFightDone;
+	}
+
+	public void setEasyFightDone(boolean easyFightDone) {
+		this.easyFightDone = easyFightDone;
+	}
+
+	public boolean isNormalFightDone() {
+		return normalFightDone;
+	}
+
+	public void setNormalFightDone(boolean normalFightDone) {
+		this.normalFightDone = normalFightDone;
+	}
+
+	public boolean isHardFightDone() {
+		return hardFightDone;
+	}
+
+	public void setHardFightDone(boolean hardFightDone) {
+		this.hardFightDone = hardFightDone;
+	}
+
+	public void setDifficulty(int difficulty) {
+		this.difficulty = difficulty;
+	}
+
+	public void setDay(int day) {
+		this.day = day;
 	}
 
 	private void nightRandomEvent() {
@@ -194,12 +231,15 @@ public class GameEnvironment {
 		
 		int randomValue = random.nextInt(10 - this.difficulty);
 		
-		if (randomValue < 3) {
+		if (randomValue <= 2 ) {
+			this.randomEventDesc = "";
+			return;
+		} else if (randomValue <= 3) {
 			if (this.party.getSize() > 1) {
 				monsterLeaves();
 				return;
 			}
-		} else if (randomValue < 6) {
+		} else if (randomValue <= 4) {
 			if (this.party.getSize() < 5) {
 				monsterJoins();
 				return;
@@ -208,7 +248,6 @@ public class GameEnvironment {
 			monsterLevels();
 			return;
 		}
-		this.randomEventDesc = "";
 	}
 	
 	
@@ -221,17 +260,37 @@ public class GameEnvironment {
 	}
 
 	public void monsterLeaves() {
-		this.randomEventDesc = "Monster left";
+		int lowestHealthIndex = this.party.getLowestHealthMonster();
+		this.randomEventDesc = String.format("Monster %s left due to its injuries from the last battle", this.party.getMonsterAtIndex(lowestHealthIndex).getName());
+		this.party.removeMonsterAtIndex(lowestHealthIndex);
 	}
 	
 	public void monsterJoins() {
-		this.randomEventDesc = "Monster joins";
-
+		Random random = new Random();
+		int randomValue = random.nextInt(60);
+		if (randomValue < 3) {
+			this.party.addMonster(new Dragon());
+			this.randomEventDesc = "A Dragon joined your party overnight!";
+		} else if (randomValue <10) {
+			this.party.addMonster(new Wizard());
+			this.randomEventDesc = "A Wizard joined your party overnight!";
+		} else if (randomValue < 20) {
+			this.party.addMonster(new Orc());
+			this.randomEventDesc = "An Orc joined your party overnight!";
+		} else if (randomValue < 30) {
+			this.party.addMonster(new Elf());
+			this.randomEventDesc = "An Elf joined your party overnight!";
+		} else {
+			this.party.addMonster(new Gremlin());
+			this.randomEventDesc = "A Gremlin joined your party overnight!";
+		}
 	}
 	
 	public void monsterLevels() {
-		this.randomEventDesc = "Monster levels";
-
+		this.randomEventDesc = String.format("Your Oldest Monster %s Leveled Up! Stats have increased", this.party.getMonsterAtIndex(0).getName());
+		this.party.getMonsterAtIndex(0).setMaxHealth((int)(this.party.getMonsterAtIndex(0).getMaxHealth() * 1.5));
+		this.party.getMonsterAtIndex(0).setDamage((int)(this.party.getMonsterAtIndex(0).getDamage() * 1.5));;
+		this.party.getMonsterAtIndex(0).setHealAmount((int)(this.party.getMonsterAtIndex(0).getHealAmount() * 1.5));;
 	}
 	
 

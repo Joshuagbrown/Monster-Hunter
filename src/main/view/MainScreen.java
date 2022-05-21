@@ -117,6 +117,22 @@ public class MainScreen {
 		dayPanel.add(dayProgressPanel);
 		dayProgressPanel.setHorizontalAlignment(SwingConstants.CENTER);
 		
+		JButton nextDayButton = new JButton("Go Next Day");
+		if (gameEnvironment.getTotalDays() == gameEnvironment.getDay()) {
+			nextDayButton = new JButton("End Game");
+		}
+		nextDayButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
+				if (gameEnvironment.endDay()) {
+					GameRunner.launchEndScreen(gameEnvironment);
+				} else {
+					GameRunner.launchMainScreen(gameEnvironment);
+				}
+			}
+		});
+		dayPanel.add(nextDayButton);
+		
 		JPanel battleSelectionPanel = new JPanel();
 		battleSelectionPanel.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Battle Selection", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		GridBagConstraints gbc_battleSelectionPanel = new GridBagConstraints();
@@ -143,33 +159,39 @@ public class MainScreen {
 		JButton battle1Button = new JButton("Easy Fight");
 		battle1Button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				gameEnvironment.setEasyFightDone(true);
 				gameEnvironment.getEnemyMonsters(1);
 				GameRunner.launchBattleScreen(gameEnvironment);
 				frame.dispose();
 			}
 		});
+		battle1Button.setEnabled(!gameEnvironment.isEasyFightDone());
 		battle1Button.setBounds(10, 42, 110, 48);
 		battleButtonPanel.add(battle1Button);
 		
 		JButton battle2Button = new JButton("Normal Fight");
 		battle2Button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				gameEnvironment.setNormalFightDone(true);
 				gameEnvironment.getEnemyMonsters(2);
 				GameRunner.launchBattleScreen(gameEnvironment);
 				frame.dispose();
 			}
 		});
+		battle2Button.setEnabled(!gameEnvironment.isNormalFightDone());
 		battle2Button.setBounds(130, 42, 110, 48);
 		battleButtonPanel.add(battle2Button);
 		
 		JButton battle3Button = new JButton("Hard Fight");
 		battle3Button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				gameEnvironment.setHardFightDone(true);
 				gameEnvironment.getEnemyMonsters(3);
 				GameRunner.launchBattleScreen(gameEnvironment);
 				frame.dispose();
 			}
 		});
+		battle3Button.setEnabled(!gameEnvironment.isHardFightDone());
 		battle3Button.setBounds(250, 42, 110, 48);
 		battleButtonPanel.add(battle3Button);
 		
@@ -361,7 +383,7 @@ public class MainScreen {
 		String randomTitle = "?";
 		Color randomTitleColor = new Color(255, 255, 255);
 		if (!gameEnvironment.getRandomEventDesc().equals("")) {
-			randomTitle = "RANDOM EVENT OCCURED!";
+			randomTitle = "RANDOM EVENT!";
 			randomTitleColor = new Color(255, 0, 0);
 		}
 		JPanel randomEventPanel = new JPanel();

@@ -76,6 +76,18 @@ public class Party {
 		}
 		return true;
 	}
+	
+	public int getLowestHealthMonster() {
+		int index = 0;
+		int currentLowestIndex = 0;
+		while (index < this.getSize()){
+			if (this.getMonsterAtIndex(currentLowestIndex).getCurrentHealth() < this.getMonsterAtIndex(index).getCurrentHealth()) {
+				currentLowestIndex = index;
+			}
+			index ++;
+		}
+		return currentLowestIndex;
+	}
 
 	public void addMonster(Monster m) {
 		this.getPartyList().add(m);

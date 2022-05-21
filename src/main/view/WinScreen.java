@@ -25,7 +25,7 @@ public class WinScreen {
 	public WinScreen() {
 		initialize();
 		frame.setVisible(true);
-		new Timer(5_000, (e) -> { frame.setVisible(false); frame.dispose(); }).start();
+		new Timer(3_000, (e) -> { frame.setVisible(false); frame.dispose(); }).start();
 	}
 
 	/**
