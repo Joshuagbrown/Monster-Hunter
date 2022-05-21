@@ -13,6 +13,11 @@ import javax.swing.Timer;
 import main.controller.GameEnvironment;
 import main.controller.GameRunner;
 
+/**
+Class Lossscreen that implements all the swing elements of the screen shown when the player loses their battle
+@author Josh Brown
+*/
+
 public class LossScreen {
 
 	private JFrame frame;

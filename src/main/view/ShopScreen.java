@@ -29,6 +29,11 @@ import javax.swing.UIManager;
 
 import java.awt.SystemColor;
 
+/**
+Class ShopScreen that implements all the swing elements of the screen shown when the player is in the Shop
+@author Aimee Cloutman
+@author Josh Brown
+*/
 public class ShopScreen {
 
 	private JFrame frmTheShop;

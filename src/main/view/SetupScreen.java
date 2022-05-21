@@ -26,6 +26,10 @@ import javax.swing.JScrollBar;
 import java.awt.Color;
 import javax.swing.DefaultComboBoxModel;
 
+/**
+Class SetupScreen that implements all the swing elements of the screen shown when the player is setting up the game
+@author Josh Brown
+*/
 public class SetupScreen {
 	
 	private ArrayList<Monster> startingMonsterList;

@@ -27,6 +27,11 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
+/**
+Class Battlescreen that implements all the swing elements of the screen shown when the player is in Battle
+@author Aimee Cloutman
+@author Josh Brown
+*/
 public class BattleScreen {
 
 	private JFrame frmBattle;
