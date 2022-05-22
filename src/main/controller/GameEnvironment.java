@@ -230,6 +230,8 @@ Creates a fight between 2 monsters, showing if your monster wins or loses and de
 	}
 
 /**
+Displays the loss screen
+@author Josh Brown
 */
 	public void loseFight() {
 		
@@ -239,6 +241,8 @@ Creates a fight between 2 monsters, showing if your monster wins or loses and de
 
 	}
 /**
+Displays the win screen and increases the gold by $100
+@author Josh Brown
 */	
 	public void winFight() {
 
@@ -310,6 +314,8 @@ Adds another day to the game, runs the overnight even where monsters are healed 
 	}
 
 /**
+Creates a random value, that dictates the random events occuring overnight. 
+@author Josh Brown
 */
 	private void nightRandomEvent() {
 		Random random = new Random();
@@ -335,21 +341,38 @@ Adds another day to the game, runs the overnight even where monsters are healed 
 		}
 	}
 	
-	
+/**
+A getter method that returns the value of randomEventDesc. 
+@return randomEventDesc
+@author Josh Brown
+*/
 	public String getRandomEventDesc() {
 		return randomEventDesc;
 	}
 
+/**
+A setter method which sets the string for randomEventDesc
+@param randomEventDesc a string
+@author Josh Brown
+*/
 	public void setRandomEventDesc(String randomEventDesc) {
 		this.randomEventDesc = randomEventDesc;
 	}
 
+/**
+Gets the lowest health monster in the party and prints a message indicating it has left the party and removes the monster at the given index
+@author Josh Brown
+*/
 	public void monsterLeaves() {
 		int lowestHealthIndex = this.party.getLowestHealthMonster();
 		this.randomEventDesc = String.format("Monster %s left due to its injuries from the last battle", this.party.getMonsterAtIndex(lowestHealthIndex).getName());
 		this.party.removeMonsterAtIndex(lowestHealthIndex);
 	}
-	
+
+/**
+Produces a random value which decides what random events occur overnight, relating to monsters joining your party. 
+@author Josh Brown 
+*/	
 	public void monsterJoins() {
 		Random random = new Random();
 		int randomValue = random.nextInt(60);
@@ -370,7 +393,11 @@ Adds another day to the game, runs the overnight even where monsters are healed 
 			this.randomEventDesc = "A Gremlin joined your party overnight!";
 		}
 	}
-	
+
+/**
+Levels up the oldest monster in your party to have increased max health, damage, and healing.
+@author Josh Brown 
+*/
 	public void monsterLevels() {
 		this.randomEventDesc = String.format("Your Oldest Monster %s Leveled Up! Stats have increased", this.party.getMonsterAtIndex(0).getName());
 		this.party.getMonsterAtIndex(0).setMaxHealth((int)(this.party.getMonsterAtIndex(0).getMaxHealth() * 1.5));
