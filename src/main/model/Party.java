@@ -126,7 +126,12 @@ A method which changes the index of the monster in the party from the current in
 		}
 		return true;
 	}
-	
+
+/**
+Gets the index of the monster with the lowest health in a party of monsters
+@return the index of the monster with the lowest heatlh as an integer
+@author Josh Brown
+*/
 	public int getLowestHealthMonster() {
 		int index = 0;
 		int currentLowestIndex = 0;
