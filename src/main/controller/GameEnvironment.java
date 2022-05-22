@@ -423,7 +423,13 @@ A setter method that sets the party of monsters for the enemy team
 	public void setEnemyParty(Party enemyParty) {
 		this.enemyParty = enemyParty;
 	}
-	
+
+/**
+If the player has enough gold and the inventory is not full then adds an item to the inventory and decreases the player gold by an adquate amount.
+@param i an Item
+@return a boolean if the purchase was successful
+@author Josh Brown
+*/
 	public boolean buyItem(Item i) {
 		if (this.player.getGold() >= i.getPurchasePrice() && this.inventory.getSize() < 6) {
 			this.player.setGold(this.player.getGold() - i.getPurchasePrice());
@@ -432,7 +438,13 @@ A setter method that sets the party of monsters for the enemy team
 		}
 		return false;
 	}
-	
+
+/**
+Sells an item, removes the item from your inventory and increases the gold you hold by the sell price
+@param index an integer of the item you are selling 
+@return a boolean if the sale was sucessful 
+@author Josh Brown
+*/
 	public boolean sellItem(int index) {
 		if (this.inventory.getSize() > index) {
 			Item i = this.inventory.getItemAtIndex(index);
@@ -443,6 +455,12 @@ A setter method that sets the party of monsters for the enemy team
 		return false;
 	}
 	
+/**
+Uses the item when the use item button is pressed during a battle, each item either affects damage or health and so this method does so accordingly
+@param index the index of the item being used
+@param monsterIndex the index of the monster the item is being used on 
+@author Josh Brown
+*/
 	public void useItem(int index, int monsterIndex) {
 		int itemId = this.inventory.getItemId(index);
 		if (itemId == 0){
@@ -458,7 +476,12 @@ A setter method that sets the party of monsters for the enemy team
 		}
 		this.inventory.removeItemAtIndex(index);
 	}	
-	
+
+/**
+A getter method which returns the inventory a player currently holds
+@return inventory the player holds
+@author Josh Brown
+*/	
 	public Inventory getInventory() {
 		return inventory;
 	}
