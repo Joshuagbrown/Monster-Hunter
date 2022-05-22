@@ -77,17 +77,6 @@ A setter method which takes a value for a selling price and assigns it to the se
 		this.sellPrice = sellPrice;
 	}
 
-/**
-*/
-	public void attack() {
-		
-	}
-
-/**
-*/	
-	public void useAbility() {
-		
-	}
 
 /**
 Heals a monster adding its healing amount to its current health. If it is above max health brings it back down to a max of max health

@@ -31,6 +31,7 @@ import javax.swing.border.MatteBorder;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.FlowLayout;
+import javax.swing.DefaultComboBoxModel;
 /**
 Class MainScreen that implements all the swing elements of the screen shown when the player is on the Main game screen
 @author Josh Brown
@@ -40,6 +41,8 @@ public class MainScreen {
 
 	private JFrame frame;
 	private GameEnvironment gameEnvironment;
+	private int selectedMonster;
+	private int selectedItem;
 
 	/**
 	 * Create the application.
@@ -200,7 +203,8 @@ public class MainScreen {
 		battleButtonPanel.add(battle3Button);
 		
 		JLabel lblNewLabel = new JLabel("The difficulty of the fight will determine how much gold you will recieve. \r\n");
-		lblNewLabel.setBounds(10, 100, 350, 38);
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 9));
+		lblNewLabel.setBounds(10, 100, 375, 38);
 		battleButtonPanel.add(lblNewLabel);
 		
 		JPanel monsterPartyPanel = new JPanel();
@@ -400,78 +404,69 @@ public class MainScreen {
 		gbc_randomEventPanel.gridy = 2;
 		frame.getContentPane().add(randomEventPanel, gbc_randomEventPanel);
 		
-		JLabel lblYourInstinctsTell = new JLabel(gameEnvironment.getRandomEventDesc());
-		lblYourInstinctsTell.setBounds(10, 28, 350, 38);
-		randomEventPanel.add(lblYourInstinctsTell);
+		JLabel randomEventLabel = new JLabel(gameEnvironment.getRandomEventDesc());
+		randomEventLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		randomEventLabel.setBounds(25, 25, 350, 38);
+		randomEventPanel.add(randomEventLabel);
 		
 		JPanel itemPanel = new JPanel();
 		itemPanel.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Inventory", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		itemPanel.setLayout(null);
 		GridBagConstraints gbc_itemPanel = new GridBagConstraints();
 		gbc_itemPanel.fill = GridBagConstraints.BOTH;
 		gbc_itemPanel.insets = new Insets(0, 0, 0, 5);
 		gbc_itemPanel.gridx = 0;
 		gbc_itemPanel.gridy = 3;
 		frame.getContentPane().add(itemPanel, gbc_itemPanel);
-		GridBagLayout gbl_itemPanel = new GridBagLayout();
-		gbl_itemPanel.columnWidths = new int[]{59, 82, 28, 100, 29, 91, 0};
-		gbl_itemPanel.rowHeights = new int[]{15, 39, 44, 8, 0};
-		gbl_itemPanel.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-		gbl_itemPanel.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-		itemPanel.setLayout(gbl_itemPanel);
 		
-		JButton itemButton1 = new JButton("New button");
-		itemButton1.setFont(new Font("Bell MT", Font.PLAIN, 12));
-		GridBagConstraints gbc_itemButton1 = new GridBagConstraints();
-		gbc_itemButton1.fill = GridBagConstraints.BOTH;
-		gbc_itemButton1.insets = new Insets(0, 0, 5, 5);
-		gbc_itemButton1.gridx = 1;
-		gbc_itemButton1.gridy = 1;
-		itemPanel.add(itemButton1, gbc_itemButton1);
 		
-		JButton itemButton2 = new JButton("New button");
-		itemButton2.setFont(new Font("Bell MT", Font.PLAIN, 12));
-		GridBagConstraints gbc_itemButton2 = new GridBagConstraints();
-		gbc_itemButton2.fill = GridBagConstraints.BOTH;
-		gbc_itemButton2.insets = new Insets(0, 0, 5, 5);
-		gbc_itemButton2.gridx = 3;
-		gbc_itemButton2.gridy = 1;
-		itemPanel.add(itemButton2, gbc_itemButton2);
+		String[] monsterArray = new String[gameEnvironment.getParty().getSize()];
+		for(int i = 0; i < monsterArray.length; i++) {
+		    monsterArray[i] = gameEnvironment.getParty().getName(i);
+		}
 		
-		JButton itemButton3 = new JButton("New button");
-		itemButton3.setFont(new Font("Bell MT", Font.PLAIN, 12));
-		GridBagConstraints gbc_itemButton3 = new GridBagConstraints();
-		gbc_itemButton3.fill = GridBagConstraints.BOTH;
-		gbc_itemButton3.insets = new Insets(0, 0, 5, 0);
-		gbc_itemButton3.gridx = 5;
-		gbc_itemButton3.gridy = 1;
-		itemPanel.add(itemButton3, gbc_itemButton3);
+		String[] itemArray = new String[gameEnvironment.getInventory().getSize()];
+		for(int i = 0; i < itemArray.length; i++) {
+		    itemArray[i] = gameEnvironment.getInventory().getName(i);
+		}
 		
-		JButton itemButton4 = new JButton("New button");
-		itemButton4.setFont(new Font("Bell MT", Font.PLAIN, 12));
-		GridBagConstraints gbc_itemButton4 = new GridBagConstraints();
-		gbc_itemButton4.fill = GridBagConstraints.BOTH;
-		gbc_itemButton4.insets = new Insets(0, 0, 5, 5);
-		gbc_itemButton4.gridx = 1;
-		gbc_itemButton4.gridy = 2;
-		itemPanel.add(itemButton4, gbc_itemButton4);
+		JComboBox monsterSelectorForItem = new JComboBox(monsterArray);
+		monsterSelectorForItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int selectedMonster = monsterSelectorForItem.getSelectedIndex();
+			}
+			
+		});
+		monsterSelectorForItem.setModel(new DefaultComboBoxModel(monsterArray));
+		monsterSelectorForItem.setMaximumRowCount(5);
+		monsterSelectorForItem.setBounds(10, 30, 104, 28);
+		itemPanel.add(monsterSelectorForItem);
 		
-		JButton itemButton5 = new JButton("New button");
-		itemButton5.setFont(new Font("Bell MT", Font.PLAIN, 12));
-		GridBagConstraints gbc_itemButton5 = new GridBagConstraints();
-		gbc_itemButton5.fill = GridBagConstraints.BOTH;
-		gbc_itemButton5.insets = new Insets(0, 0, 5, 5);
-		gbc_itemButton5.gridx = 3;
-		gbc_itemButton5.gridy = 2;
-		itemPanel.add(itemButton5, gbc_itemButton5);
+		JComboBox itemSelector = new JComboBox(itemArray);
+		itemSelector.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int selectedItem = itemSelector.getSelectedIndex();
+			}
+		});
+		itemSelector.setModel(new DefaultComboBoxModel(itemArray));
+		itemSelector.setMaximumRowCount(5);
+		itemSelector.setBounds(136, 30, 104, 28);
+		itemPanel.add(itemSelector);
 		
-		JButton itemButton6 = new JButton("New button");
-		itemButton6.setFont(new Font("Bell MT", Font.PLAIN, 12));
-		GridBagConstraints gbc_itemButton6 = new GridBagConstraints();
-		gbc_itemButton6.insets = new Insets(0, 0, 5, 0);
-		gbc_itemButton6.fill = GridBagConstraints.BOTH;
-		gbc_itemButton6.gridx = 5;
-		gbc_itemButton6.gridy = 2;
-		itemPanel.add(itemButton6, gbc_itemButton6);
+		if (gameEnvironment.getInventory().getSize() > 0) {
+			JButton useItem = new JButton("Use Item");
+			useItem.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					gameEnvironment.useItem(itemSelector.getSelectedIndex(), monsterSelectorForItem.getSelectedIndex());
+					frame.dispose();
+					GameRunner.launchMainScreen(gameEnvironment);
+				}
+			});
+			
+			useItem.setBounds(296, 30, 91, 28);
+			useItem.setFont(new Font("Bell MT", Font.PLAIN, 12));
+			itemPanel.add(useItem);			
+		}
 		
 		JPanel shopPanel = new JPanel();
 		shopPanel.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Shop", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));

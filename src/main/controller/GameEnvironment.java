@@ -7,6 +7,8 @@ import main.model.Dragon;
 import main.model.Elf;
 import main.model.Gremlin;
 import main.model.Human;
+import main.model.Inventory;
+import main.model.Item;
 import main.model.Monster;
 import main.model.Orc;
 import main.model.Party;
@@ -27,6 +29,7 @@ public class GameEnvironment {
 	
 	private Party party;
 	private Party enemyParty = new Party(new Gremlin());
+	private Inventory inventory;
 	
 	private String randomEventDesc = "";
 	
@@ -54,6 +57,7 @@ Takes the players entered name, days, chosen Monster and difficulty level and se
 
 	public boolean setupGame(String name, int days, Monster monster, int difficulty) {
 		this.party = new Party(monster);
+		this.inventory = new Inventory();
 		this.difficulty = difficulty;
 		this.totalDays = days;
 		return player.setup(name);
@@ -392,10 +396,45 @@ A setter method that sets the party of monsters for the enemy team
 	public void setEnemyParty(Party enemyParty) {
 		this.enemyParty = enemyParty;
 	}
-
 	
-
+	public boolean buyItem(Item i) {
+		if (this.player.getGold() >= i.getPurchasePrice() && this.inventory.getSize() < 6) {
+			this.player.setGold(this.player.getGold() - i.getPurchasePrice());
+			this.inventory.addItem(i);
+			return true;
+		}
+		return false;
+	}
 	
+	public boolean sellItem(int index) {
+		if (this.inventory.getSize() > index) {
+			Item i = this.inventory.getItemAtIndex(index);
+			this.player.setGold(this.player.getGold() + i.getSellPrice());
+			this.inventory.removeItemAtIndex(index);
+			return true;
+		}
+		return false;
+	}
+	
+	public void useItem(int index, int monsterIndex) {
+		int itemId = this.inventory.getItemId(index);
+		if (itemId == 0){
+			int currentHealth = this.party.getMonsterAtIndex(monsterIndex).getCurrentHealth();
+			int maxHealth = this.party.getMonsterAtIndex(monsterIndex).getMaxHealth();
+			this.party.getMonsterAtIndex(monsterIndex).setCurrentHealth(currentHealth + (maxHealth / 2));	
+		} else if (itemId == 1) {
+			int damage = this.party.getMonsterAtIndex(monsterIndex).getDamage();
+			this.party.getMonsterAtIndex(monsterIndex).setDamage(damage + (damage / 4));
+		} else if (itemId == 2) {
+			int healAmount = this.party.getMonsterAtIndex(monsterIndex).getHealAmount();
+			this.party.getMonsterAtIndex(monsterIndex).setHealAmount(healAmount + (healAmount / 2));
+		}
+		this.inventory.removeItemAtIndex(index);
+	}	
+	
+	public Inventory getInventory() {
+		return inventory;
+	}
 }
 
 

@@ -8,11 +8,15 @@ import javax.swing.JTextField;
 
 import main.controller.GameEnvironment;
 import main.controller.GameRunner;
+import main.model.ComfyBed;
 import main.model.Dragon;
 import main.model.Elf;
 import main.model.Gremlin;
+import main.model.HealthPotion;
+import main.model.Item;
 import main.model.Monster;
 import main.model.Orc;
+import main.model.StrengthPotion;
 import main.model.Wizard;
 
 import javax.swing.JButton;
@@ -57,12 +61,12 @@ public class ShopScreen {
 	private void initialize() {
 		frmTheShop = new JFrame();
 		frmTheShop.setTitle("THE SHOP");
-		frmTheShop.setBounds(100, 100, 655, 602);
+		frmTheShop.setBounds(100, 100, 878, 602);
 		frmTheShop.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmTheShop.getContentPane().setLayout(null);
 		
 		JLabel lblNewLabel_1 = new JLabel(String.format("GOLD: %s", gameEnvironment.getPlayer().getGold()));
-		lblNewLabel_1.setBounds(450, 33, 111, 16);
+		lblNewLabel_1.setBounds(417, 6, 111, 16);
 		frmTheShop.getContentPane().add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_3 = new JLabel("Monsters:");
@@ -114,20 +118,20 @@ public class ShopScreen {
 		frmTheShop.getContentPane().add(lblNewLabel);
 		
 		JLabel lblNewLabel_13 = new JLabel("Items:");
-		lblNewLabel_13.setBounds(6, 243, 61, 16);
+		lblNewLabel_13.setBounds(502, 6, 61, 16);
 		frmTheShop.getContentPane().add(lblNewLabel_13);
 		
-		JLabel lblNewLabel_21 = new JLabel("Heal Amount +20");
-		lblNewLabel_21.setBounds(239, 264, 130, 16);
-		frmTheShop.getContentPane().add(lblNewLabel_21);
+		JLabel item1Description = new JLabel(""+new HealthPotion().getDescription());
+		item1Description.setBounds(671, 33, 165, 16);
+		frmTheShop.getContentPane().add(item1Description);
 		
-		JLabel lblNewLabel_22 = new JLabel("Damage +20");
-		lblNewLabel_22.setBounds(239, 295, 111, 16);
-		frmTheShop.getContentPane().add(lblNewLabel_22);
+		JLabel item2Description = new JLabel(""+new StrengthPotion().getDescription());
+		item2Description.setBounds(671, 60, 165, 16);
+		frmTheShop.getContentPane().add(item2Description);
 		
-		JLabel lblNewLabel_23 = new JLabel("Health = Max Health");
-		lblNewLabel_23.setBounds(239, 320, 143, 26);
-		frmTheShop.getContentPane().add(lblNewLabel_23);
+		JLabel item3Description = new JLabel(""+new ComfyBed().getDescription());
+		item3Description.setBounds(671, 85, 194, 26);
+		frmTheShop.getContentPane().add(item3Description);
 		
 		JButton gremlinBuyButton = new JButton("$"+Integer.toString(new Gremlin().getPurchasePrice()));
 		gremlinBuyButton.addActionListener(new ActionListener() {
@@ -280,41 +284,65 @@ public class ShopScreen {
 		lblNewLabel_9.setBounds(6, 178, 61, 16);
 		frmTheShop.getContentPane().add(lblNewLabel_9);
 		
-		JLabel lblNewLabel_26 = new JLabel("Healing Potion");
-		lblNewLabel_26.setBounds(6, 264, 99, 16);
-		frmTheShop.getContentPane().add(lblNewLabel_26);
+		JLabel item1Label = new JLabel("Healing Potion");
+		item1Label.setBounds(502, 27, 99, 16);
+		frmTheShop.getContentPane().add(item1Label);
 		
-		JLabel lblNewLabel_27 = new JLabel("Damage Potion");
-		lblNewLabel_27.setBounds(6, 295, 99, 16);
-		frmTheShop.getContentPane().add(lblNewLabel_27);
+		JLabel item2Label = new JLabel("Damage Potion");
+		item2Label.setBounds(502, 58, 99, 16);
+		frmTheShop.getContentPane().add(item2Label);
 		
-		JLabel lblNewLabel_28 = new JLabel("Medical Kit");
-		lblNewLabel_28.setBounds(6, 325, 99, 16);
-		frmTheShop.getContentPane().add(lblNewLabel_28);
+		JLabel item3Label = new JLabel("Comfy Bed");
+		item3Label.setBounds(502, 88, 99, 16);
+		frmTheShop.getContentPane().add(item3Label);
 		
-		JButton btnNewButton = new JButton("$200");
-		btnNewButton.setBounds(91, 258, 74, 29);
-		frmTheShop.getContentPane().add(btnNewButton);
+		JButton item1BuyButton = new JButton("$"+new HealthPotion().getPurchasePrice());
+		item1BuyButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Item i = new HealthPotion();
+				if (gameEnvironment.buyItem(i)) {
+					frmTheShop.dispose();
+					GameRunner.launchShopScreen(gameEnvironment);
+					//TODO - Buy successful
+				} else {
+					//TODO - Buy failed
+				}
+			}
+		});
+		item1BuyButton.setBounds(587, 21, 74, 29);
+		frmTheShop.getContentPane().add(item1BuyButton);
 		
-		JButton btnNewButton_1 = new JButton("$300");
-		btnNewButton_1.setBounds(91, 289, 74, 29);
-		frmTheShop.getContentPane().add(btnNewButton_1);
+		JButton item2BuyButton = new JButton("$"+new StrengthPotion().getPurchasePrice());
+		item2BuyButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Item i = new StrengthPotion();
+				if (gameEnvironment.buyItem(i)) {
+					frmTheShop.dispose();
+					GameRunner.launchShopScreen(gameEnvironment);
+					//TODO - Buy successful
+				} else {
+					//TODO - Buy failed
+				}
+			}
+		});
+		item2BuyButton.setBounds(587, 52, 74, 29);
+		frmTheShop.getContentPane().add(item2BuyButton);
 		
-		JButton btnNewButton_2 = new JButton("$400");
-		btnNewButton_2.setBounds(91, 320, 74, 29);
-		frmTheShop.getContentPane().add(btnNewButton_2);
-		
-		JButton btnNewButton_3 = new JButton("$100");
-		btnNewButton_3.setBounds(164, 258, 73, 29);
-		frmTheShop.getContentPane().add(btnNewButton_3);
-		
-		JButton btnNewButton_4 = new JButton("$200");
-		btnNewButton_4.setBounds(164, 289, 73, 29);
-		frmTheShop.getContentPane().add(btnNewButton_4);
-		
-		JButton btnNewButton_5 = new JButton("$200");
-		btnNewButton_5.setBounds(164, 320, 73, 29);
-		frmTheShop.getContentPane().add(btnNewButton_5);
+		JButton item3BuyButton = new JButton("$"+new ComfyBed().getPurchasePrice());
+		item3BuyButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Item i = new ComfyBed();
+				if (gameEnvironment.buyItem(i)) {
+					frmTheShop.dispose();
+					GameRunner.launchShopScreen(gameEnvironment);
+					//TODO - Buy successful
+				} else {
+					//TODO - Buy failed
+				}
+			}
+		});
+		item3BuyButton.setBounds(587, 83, 74, 29);
+		frmTheShop.getContentPane().add(item3BuyButton);
 		
 		JButton btnNewButton_6 = new JButton("Exit");
 		btnNewButton_6.addActionListener(new ActionListener() {
@@ -323,36 +351,12 @@ public class ShopScreen {
 				frmTheShop.dispose();
 			}
 		});
-		btnNewButton_6.setBounds(546, 411, 85, 21);
+		btnNewButton_6.setBounds(751, 462, 85, 21);
 		frmTheShop.getContentPane().add(btnNewButton_6);
-		
-		JLabel lblNewLabel_18_4_1 = new JLabel("New label");
-		lblNewLabel_18_4_1.setBounds(416, 291, 81, 26);
-		frmTheShop.getContentPane().add(lblNewLabel_18_4_1);
-		
-		JLabel lblNewLabel_18_2_1 = new JLabel("New label");
-		lblNewLabel_18_2_1.setBounds(507, 259, 81, 26);
-		frmTheShop.getContentPane().add(lblNewLabel_18_2_1);
-		
-		JLabel lblNewLabel_18_3_1 = new JLabel("New label");
-		lblNewLabel_18_3_1.setBounds(416, 266, 81, 26);
-		frmTheShop.getContentPane().add(lblNewLabel_18_3_1);
-		
-		JLabel lblNewLabel_18_1_1 = new JLabel("New label");
-		lblNewLabel_18_1_1.setBounds(507, 238, 81, 26);
-		frmTheShop.getContentPane().add(lblNewLabel_18_1_1);
-		
-		JLabel lblNewLabel_18_5 = new JLabel("New label");
-		lblNewLabel_18_5.setBounds(416, 238, 81, 26);
-		frmTheShop.getContentPane().add(lblNewLabel_18_5);
-		
-		JLabel lblNewLabel_18_4_1_1 = new JLabel("New label");
-		lblNewLabel_18_4_1_1.setBounds(507, 289, 81, 26);
-		frmTheShop.getContentPane().add(lblNewLabel_18_4_1_1);
 		
 		JPanel monsterPartyPanel = new JPanel();
 		monsterPartyPanel.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Party", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
-		monsterPartyPanel.setBounds(6, 359, 386, 177);
+		monsterPartyPanel.setBounds(6, 229, 386, 177);
 		frmTheShop.getContentPane().add(monsterPartyPanel);
 		monsterPartyPanel.setLayout(new GridLayout(6, 4, 0, 0));
 		
@@ -572,6 +576,118 @@ public class ShopScreen {
 		dragonHealLabel.setBounds(356, 180, 55, 16);
 		frmTheShop.getContentPane().add(dragonHealLabel);
 		
+		JPanel inventoryPanel = new JPanel();
+		inventoryPanel.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Party", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		inventoryPanel.setBounds(519, 229, 178, 177);
+		frmTheShop.getContentPane().add(inventoryPanel);
+		inventoryPanel.setLayout(new GridLayout(7, 1, 0, 0));
+		
+		JLabel itemLabel = new JLabel("Items:");
+		itemLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		itemLabel.setFont(new Font("Bell MT", Font.PLAIN, 12));
+		itemLabel.setBackground(Color.BLUE);
+		inventoryPanel.add(itemLabel);
+		
+		JLabel lblNewLabel_2 = new JLabel(gameEnvironment.getInventory().getName(0));
+		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
+		inventoryPanel.add(lblNewLabel_2);
+		
+		JLabel lblNewLabel_10 = new JLabel(gameEnvironment.getInventory().getName(1));
+		lblNewLabel_10.setHorizontalAlignment(SwingConstants.CENTER);
+		inventoryPanel.add(lblNewLabel_10);
+		
+		JLabel lblNewLabel_12 = new JLabel(gameEnvironment.getInventory().getName(2));
+		lblNewLabel_12.setHorizontalAlignment(SwingConstants.CENTER);
+		inventoryPanel.add(lblNewLabel_12);
+		
+		JLabel lblNewLabel_14 = new JLabel(gameEnvironment.getInventory().getName(3));
+		lblNewLabel_14.setHorizontalAlignment(SwingConstants.CENTER);
+		inventoryPanel.add(lblNewLabel_14);
+		
+		JLabel lblNewLabel_15 = new JLabel(gameEnvironment.getInventory().getName(4));
+		lblNewLabel_15.setHorizontalAlignment(SwingConstants.CENTER);
+		inventoryPanel.add(lblNewLabel_15);
+		
+		JLabel lblNewLabel_16 = new JLabel(gameEnvironment.getInventory().getName(5));
+		lblNewLabel_16.setHorizontalAlignment(SwingConstants.CENTER);
+		inventoryPanel.add(lblNewLabel_16);
+		if (gameEnvironment.getInventory().getSize() > 0) {
+			JButton item1Sell = new JButton(String.format("Sell for $%s", gameEnvironment.getInventory().getItemAtIndex(0).getSellPrice()));
+			item1Sell.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					gameEnvironment.sellItem(0);
+					frmTheShop.dispose();
+					GameRunner.launchShopScreen(gameEnvironment);
+				}
+			});
+			item1Sell.setBounds(700, 267, 120, 21);
+			frmTheShop.getContentPane().add(item1Sell);
+		}
+		if (gameEnvironment.getInventory().getSize() > 1) {	
+			JButton item2Sell = new JButton(String.format("Sell for $%s", gameEnvironment.getInventory().getItemAtIndex(1).getSellPrice()));
+			item2Sell.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					gameEnvironment.sellItem(1);
+					frmTheShop.dispose();
+					GameRunner.launchShopScreen(gameEnvironment);
+				}
+			});
+			item2Sell.setBounds(700, 290, 120, 21);
+			frmTheShop.getContentPane().add(item2Sell);
+		}
+		
+		if (gameEnvironment.getInventory().getSize() > 2) {
+			JButton item3Sell = new JButton(String.format("Sell for $%s", gameEnvironment.getInventory().getItemAtIndex(2).getSellPrice()));
+			item3Sell.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					gameEnvironment.sellItem(2);
+					frmTheShop.dispose();
+					GameRunner.launchShopScreen(gameEnvironment);
+				}
+			});
+			item3Sell.setBounds(700, 311, 120, 21);
+			frmTheShop.getContentPane().add(item3Sell);
+		}
+		
+		if (gameEnvironment.getInventory().getSize() > 3) {
+			JButton item4Sell = new JButton(String.format("Sell for $%s", gameEnvironment.getInventory().getItemAtIndex(3).getSellPrice()));
+			item4Sell.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					gameEnvironment.sellItem(3);
+					frmTheShop.dispose();
+					GameRunner.launchShopScreen(gameEnvironment);
+				}
+			});
+			item4Sell.setBounds(700, 334, 120, 21);
+			frmTheShop.getContentPane().add(item4Sell);
+		}
+		
+		if (gameEnvironment.getInventory().getSize() > 4) {
+			JButton item5Sell = new JButton(String.format("Sell for $%s", gameEnvironment.getInventory().getItemAtIndex(4).getSellPrice()));
+			item5Sell.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					gameEnvironment.sellItem(4);
+					frmTheShop.dispose();
+					GameRunner.launchShopScreen(gameEnvironment);
+				}
+			});
+			item5Sell.setBounds(700, 355, 120, 21);
+			frmTheShop.getContentPane().add(item5Sell);
+		}
+		
+		if (gameEnvironment.getInventory().getSize() > 5) {
+			JButton item6Sell = new JButton(String.format("Sell for $%s", gameEnvironment.getInventory().getItemAtIndex(5).getSellPrice()));
+			item6Sell.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					gameEnvironment.sellItem(5);
+					frmTheShop.dispose();
+					GameRunner.launchShopScreen(gameEnvironment);
+				}
+			});
+			item6Sell.setBounds(700, 378, 120, 21);
+			frmTheShop.getContentPane().add(item6Sell);
+		}
+		
 		if (gameEnvironment.getParty().getSize() > 1) {
 			JButton sellButton1 = new JButton(String.format("Sell for $%s", gameEnvironment.getParty().getMonsterAtIndex(0).getSellPrice()));
 			sellButton1.addActionListener(new ActionListener() {
@@ -581,7 +697,7 @@ public class ShopScreen {
 					GameRunner.launchShopScreen(gameEnvironment);
 				}
 			});
-			sellButton1.setBounds(392, 400, 120, 21);
+			sellButton1.setBounds(392, 265, 120, 21);
 			frmTheShop.getContentPane().add(sellButton1);
 		}
 		
@@ -594,7 +710,7 @@ public class ShopScreen {
 					GameRunner.launchShopScreen(gameEnvironment);
 				}
 			});
-			sellButton2.setBounds(392, 428, 120, 21);
+			sellButton2.setBounds(392, 293, 120, 21);
 			frmTheShop.getContentPane().add(sellButton2);
 		}
 		
@@ -607,7 +723,7 @@ public class ShopScreen {
 					GameRunner.launchShopScreen(gameEnvironment);
 				}
 			});
-			sellButton3.setBounds(392, 456, 120, 21);
+			sellButton3.setBounds(392, 321, 120, 21);
 			frmTheShop.getContentPane().add(sellButton3);
 		}
 		
@@ -620,7 +736,7 @@ public class ShopScreen {
 					GameRunner.launchShopScreen(gameEnvironment);
 				}
 			});
-			sellButton4.setBounds(392, 484, 120, 21);
+			sellButton4.setBounds(392, 349, 120, 21);
 			frmTheShop.getContentPane().add(sellButton4);
 		}
 		
@@ -633,7 +749,7 @@ public class ShopScreen {
 					GameRunner.launchShopScreen(gameEnvironment);
 				}
 			});
-			sellButton5.setBounds(392, 510, 120, 21);
+			sellButton5.setBounds(392, 377, 120, 21);
 			frmTheShop.getContentPane().add(sellButton5);
 		}
 	}
