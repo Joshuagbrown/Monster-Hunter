@@ -15,7 +15,7 @@ import main.view.ShopScreen;
 import main.view.WinScreen;
 
 /**
-Runs and controls the main screens in the game
+Runs the main screens in the game, as well as connecting to the game environment
 @author Josh Brown
 */
 public class GameRunner {
@@ -79,12 +79,19 @@ Displays the loss screen for when a player loses a battle
 		LossScreen lossScreen = new LossScreen();	
 
 	}
-	
+
+/**
+Displays the ending screen for when the game is over
+@author Josh Brown
+*/
 	public static void launchEndScreen(GameEnvironment gameEnvironment) {
 		EndScreen endScreen = new EndScreen(gameEnvironment);	
 
 	}
 	
+/**
+Main method, sets up a new gameEnvironment
+*/
 	public static void main(String args[]) {
 		GameEnvironment gameEnvironment = new GameEnvironment();
 		setup(gameEnvironment);					
