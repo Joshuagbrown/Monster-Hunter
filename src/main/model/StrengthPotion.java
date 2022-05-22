@@ -1,5 +1,9 @@
 package main.model;
 
+/**
+Class for the item option of a strength potion, it extends the item class as is a specific intance of an item 
+@author Josh Brown
+*/
 public class StrengthPotion extends Item{
 
 	public StrengthPotion() {
