@@ -12,6 +12,6 @@ Holds all the specific statistics relevant to a Gremlin
 */
 	 public Gremlin() {
 		 //name, maxHealth, damage, healAmount, buyPrice, sellPrice 
-		 super("Gremlin", 30, 5, 5, 50, 50);
+		 super("Gremlin", 30, 5, 5, 50, 20);
 	 }
 }

@@ -26,6 +26,7 @@ import java.awt.GridBagLayout;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
+import javax.swing.JComboBox;
 
 /**
 Class Battlescreen that implements all the swing elements of the screen shown when the player is in Battle
@@ -475,71 +476,6 @@ public class BattleScreen {
 		enemyMonster5Heal.setFont(new Font("Bell MT", Font.PLAIN, 12));
 		enemyMonster5StatsPanel.add(enemyMonster5Heal);
 		
-		JPanel itemPanel = new JPanel();
-		itemPanel.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Inventory", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
-		itemPanel.setBounds(10, 197, 364, 118);
-		frmBattle.getContentPane().add(itemPanel);
-		GridBagLayout gbl_itemPanel = new GridBagLayout();
-		gbl_itemPanel.columnWidths = new int[]{82, 28, 100, 29, 91, 0};
-		gbl_itemPanel.rowHeights = new int[]{15, 39, 44, 8, 0};
-		gbl_itemPanel.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-		gbl_itemPanel.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-		itemPanel.setLayout(gbl_itemPanel);
-		
-		JButton itemButton1 = new JButton("New button");
-		itemButton1.setFont(new Font("Bell MT", Font.PLAIN, 12));
-		GridBagConstraints gbc_itemButton1 = new GridBagConstraints();
-		gbc_itemButton1.fill = GridBagConstraints.BOTH;
-		gbc_itemButton1.insets = new Insets(0, 0, 5, 5);
-		gbc_itemButton1.gridx = 0;
-		gbc_itemButton1.gridy = 1;
-		itemPanel.add(itemButton1, gbc_itemButton1);
-		
-		JButton itemButton2 = new JButton("New button");
-		itemButton2.setFont(new Font("Bell MT", Font.PLAIN, 12));
-		GridBagConstraints gbc_itemButton2 = new GridBagConstraints();
-		gbc_itemButton2.fill = GridBagConstraints.BOTH;
-		gbc_itemButton2.insets = new Insets(0, 0, 5, 5);
-		gbc_itemButton2.gridx = 2;
-		gbc_itemButton2.gridy = 1;
-		itemPanel.add(itemButton2, gbc_itemButton2);
-		
-		JButton itemButton3 = new JButton("New button");
-		itemButton3.setFont(new Font("Bell MT", Font.PLAIN, 12));
-		GridBagConstraints gbc_itemButton3 = new GridBagConstraints();
-		gbc_itemButton3.fill = GridBagConstraints.BOTH;
-		gbc_itemButton3.insets = new Insets(0, 0, 5, 0);
-		gbc_itemButton3.gridx = 4;
-		gbc_itemButton3.gridy = 1;
-		itemPanel.add(itemButton3, gbc_itemButton3);
-		
-		JButton itemButton4 = new JButton("New button");
-		itemButton4.setFont(new Font("Bell MT", Font.PLAIN, 12));
-		GridBagConstraints gbc_itemButton4 = new GridBagConstraints();
-		gbc_itemButton4.fill = GridBagConstraints.BOTH;
-		gbc_itemButton4.insets = new Insets(0, 0, 5, 5);
-		gbc_itemButton4.gridx = 0;
-		gbc_itemButton4.gridy = 2;
-		itemPanel.add(itemButton4, gbc_itemButton4);
-		
-		JButton itemButton5 = new JButton("New button");
-		itemButton5.setFont(new Font("Bell MT", Font.PLAIN, 12));
-		GridBagConstraints gbc_itemButton5 = new GridBagConstraints();
-		gbc_itemButton5.fill = GridBagConstraints.BOTH;
-		gbc_itemButton5.insets = new Insets(0, 0, 5, 5);
-		gbc_itemButton5.gridx = 2;
-		gbc_itemButton5.gridy = 2;
-		itemPanel.add(itemButton5, gbc_itemButton5);
-		
-		JButton itemButton6 = new JButton("New button");
-		itemButton6.setFont(new Font("Bell MT", Font.PLAIN, 12));
-		GridBagConstraints gbc_itemButton6 = new GridBagConstraints();
-		gbc_itemButton6.fill = GridBagConstraints.BOTH;
-		gbc_itemButton6.insets = new Insets(0, 0, 5, 0);
-		gbc_itemButton6.gridx = 4;
-		gbc_itemButton6.gridy = 2;
-		itemPanel.add(itemButton6, gbc_itemButton6);
-		
 		JButton surrenderButton = new JButton("Surrender?");
 		surrenderButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -558,6 +494,58 @@ public class BattleScreen {
 		JLabel lblNewLabel_1 = new JLabel(gameEnvironment.getEnemyParty().getMonsterAtIndex(gameEnvironment.getEnemyParty().getCurrentFighterIndex()).getName());
 		lblNewLabel_1.setBounds(607, 100, 88, 13);
 		frmBattle.getContentPane().add(lblNewLabel_1);
+		
+		JPanel itemPanel = new JPanel();
+		itemPanel.setLayout(null);
+		itemPanel.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Inventory", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		itemPanel.setBounds(10, 183, 364, 139);
+		frmBattle.getContentPane().add(itemPanel);
+		
+		String[] monsterArray = new String[gameEnvironment.getParty().getSize()];
+		for(int i = 0; i < monsterArray.length; i++) {
+		    monsterArray[i] = gameEnvironment.getParty().getName(i);
+		}
+		
+		String[] itemArray = new String[gameEnvironment.getInventory().getSize()];
+		for(int i = 0; i < itemArray.length; i++) {
+		    itemArray[i] = gameEnvironment.getInventory().getName(i);
+		}
+		
+		JComboBox monsterSelectorForItem = new JComboBox(monsterArray);
+		monsterSelectorForItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int selectedMonster = monsterSelectorForItem.getSelectedIndex();
+			}
+			
+		});
+		monsterSelectorForItem.setMaximumRowCount(5);
+		monsterSelectorForItem.setBounds(10, 30, 104, 28);
+		itemPanel.add(monsterSelectorForItem);
+		
+		JComboBox itemSelector = new JComboBox(itemArray);
+		itemSelector.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int selectedItem = itemSelector.getSelectedIndex();
+			}
+		});
+		itemSelector.setMaximumRowCount(5);
+		itemSelector.setBounds(136, 30, 104, 28);
+		itemPanel.add(itemSelector);
+		
+		if (gameEnvironment.getInventory().getSize() > 0) {
+			JButton useItem = new JButton("Use Item");
+			useItem.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					gameEnvironment.useItem(itemSelector.getSelectedIndex(), monsterSelectorForItem.getSelectedIndex());
+					frmBattle.dispose();
+					GameRunner.launchBattleScreen(gameEnvironment);
+				}
+			});
+			
+			useItem.setBounds(256, 30, 91, 28);
+			useItem.setFont(new Font("Bell MT", Font.PLAIN, 12));
+			itemPanel.add(useItem);			
+		}
 		
 		
 		

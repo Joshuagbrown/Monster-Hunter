@@ -12,6 +12,6 @@ Holds all the specific statistics relevant to a Dragon
 */
 	 public Dragon() {
 		 //name, maxHealth, damage, healAmount, buyPrice, sellPrice 
-		 super("Dragon", 80, 30, 20, 50, 50);
+		 super("Dragon", 120, 35, 20, 1000, 500);
 	 }
 }

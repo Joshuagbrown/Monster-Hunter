@@ -29,7 +29,7 @@ A setter method which sets up the game setting the players name to the name vari
 		if (name.length() < 3 || name.length() > 15)
 			return false;
 		this.name = name;
-		this.gold = 10000;
+		this.gold = 200;
 		
 		return true;
 	}

@@ -13,7 +13,7 @@ Holds all the specific statistics relevant to a Orc
 	public Orc() {
 		 //name, maxHealth, damage, healAmount, buyPrice, sellPrice 
 
-		super("Orc", 100, 5, 2, 100, 80);
+		super("Orc", 100, 5, 25, 100, 50);
 	}
 	
 }

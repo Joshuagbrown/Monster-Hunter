@@ -36,19 +36,19 @@ public class EndScreen {
 		frame.getContentPane().add(endTitleLabel);
 		
 		JLabel dayTitileLabel = new JLabel("Days Played:\r\n\r\n");
-		dayTitileLabel.setBounds(10, 54, 65, 36);
+		dayTitileLabel.setBounds(10, 54, 101, 36);
 		frame.getContentPane().add(dayTitileLabel);
 		
 		JLabel scoreTitleLabel = new JLabel("Score:");
-		scoreTitleLabel.setBounds(10, 96, 65, 36);
+		scoreTitleLabel.setBounds(10, 96, 101, 36);
 		frame.getContentPane().add(scoreTitleLabel);
 		
-		JLabel scoreLabel = new JLabel("New label");
-		scoreLabel.setBounds(85, 96, 65, 36);
+		JLabel scoreLabel = new JLabel(Integer.toString(gameEnvironment.getScore()));
+		scoreLabel.setBounds(136, 96, 65, 36);
 		frame.getContentPane().add(scoreLabel);
 		
-		JLabel dayLabel = new JLabel("New label");
-		dayLabel.setBounds(85, 54, 65, 36);
+		JLabel dayLabel = new JLabel(Integer.toString(gameEnvironment.getTotalDays()));
+		dayLabel.setBounds(136, 54, 65, 36);
 		frame.getContentPane().add(dayLabel);
 	}
 }

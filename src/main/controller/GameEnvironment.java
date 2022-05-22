@@ -26,6 +26,8 @@ public class GameEnvironment {
 	private int difficulty;
 	private int totalDays;
 	private int day = 1;
+	private int winGold = 0;
+	private int score = 0;
 	
 	private Party party;
 	private Party enemyParty = new Party(new Gremlin());
@@ -248,7 +250,7 @@ Displays the win screen and increases the gold by $100
 
 		//TODO - add some stuff here
 		
-		this.player.setGold(this.player.getGold() + 100);
+		this.player.setGold(this.player.getGold() + winGold);
 		
 		GameRunner.displayWin();
 
@@ -286,6 +288,7 @@ Adds another day to the game, runs the overnight even where monsters are healed 
 	}
 
 	public void setEasyFightDone(boolean easyFightDone) {
+		this.winGold = 100;
 		this.easyFightDone = easyFightDone;
 	}
 
@@ -294,6 +297,7 @@ Adds another day to the game, runs the overnight even where monsters are healed 
 	}
 
 	public void setNormalFightDone(boolean normalFightDone) {
+		this.winGold = 200;
 		this.normalFightDone = normalFightDone;
 	}
 
@@ -302,6 +306,7 @@ Adds another day to the game, runs the overnight even where monsters are healed 
 	}
 
 	public void setHardFightDone(boolean hardFightDone) {
+		this.winGold = 350;
 		this.hardFightDone = hardFightDone;
 	}
 
@@ -461,6 +466,14 @@ A setter method that sets the party of monsters for the enemy team
 	
 	public Inventory getInventory() {
 		return inventory;
+	}
+	
+	public int getScore() {
+		for (Monster i : this.getParty().getPartyList()) {
+			score += i.getSellPrice();			
+		}
+		score += this.player.getGold();
+		return score;
 	}
 }
 

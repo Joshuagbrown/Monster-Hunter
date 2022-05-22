@@ -13,6 +13,6 @@ Holds all the specific statistics relevant to a Wizard
 	 public Wizard() {
 		 //name, maxHealth, damage, healAmount, buyPrice, sellPrice 
 
-		 super("Wizard", 50, 20, 30, 50, 50) ;
+		 super("Wizard", 50, 25, 25, 250, 125) ;
 	 }
 }

@@ -61,7 +61,7 @@ public class ShopScreen {
 	private void initialize() {
 		frmTheShop = new JFrame();
 		frmTheShop.setTitle("THE SHOP");
-		frmTheShop.setBounds(100, 100, 878, 602);
+		frmTheShop.setBounds(100, 100, 878, 535);
 		frmTheShop.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmTheShop.getContentPane().setLayout(null);
 		
@@ -577,7 +577,7 @@ public class ShopScreen {
 		frmTheShop.getContentPane().add(dragonHealLabel);
 		
 		JPanel inventoryPanel = new JPanel();
-		inventoryPanel.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Party", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		inventoryPanel.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Inventory", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		inventoryPanel.setBounds(519, 229, 178, 177);
 		frmTheShop.getContentPane().add(inventoryPanel);
 		inventoryPanel.setLayout(new GridLayout(7, 1, 0, 0));

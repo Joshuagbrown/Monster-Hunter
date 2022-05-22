@@ -12,7 +12,7 @@ Holds all the specific statistics relevant to an Elf
 */
 	public Elf() {
 		 //name, maxHealth, damage, healAmount, buyPrice, sellPrice 
-		super("Elf", 50, 10, 5, 50, 50);
+		super("Elf", 50, 10, 25, 100, 50);
 	}
 
 
