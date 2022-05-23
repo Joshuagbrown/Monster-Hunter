@@ -168,7 +168,7 @@ Gets the monsters in the enemy party from the battle the player is playing. Sets
 		this.party.setCurrentFighterIndex(0);
 		this.enemyParty.setCurrentFighterIndex(0);
 
-		
+	
 		Random random = new Random();
 		
 		int randomSizeValue = random.nextInt(3) + this.day + battleChoice + this.difficulty;
@@ -291,37 +291,77 @@ Adds another day to the game, runs the overnight even where monsters are healed 
 		return false;
 	}
 
+/**
+A getter method which returns the status of an easy fight, whether it is complete or not 
+@return whether the easy fight is complete
+@author Josh Brown
+*/
 	public boolean isEasyFightDone() {
 		return easyFightDone;
 	}
 
+/**
+A setter method which sets the easy fight to be finished and increase gold by $100
+@param easyFightDone, a boolean indicating the status of an easy fight
+@author Josh Brown
+*/
 	public void setEasyFightDone(boolean easyFightDone) {
 		this.winGold = 100;
 		this.easyFightDone = easyFightDone;
 	}
 
+/**
+A getter method which returns the status of a normal fight, whether it is complete or not 
+@return whether the normal fight is complete
+@author Josh Brown
+*/
 	public boolean isNormalFightDone() {
 		return normalFightDone;
 	}
 
+/**
+A setter method which sets the normal fight to be finished and increase gold by $200
+@param NormalFightDone, a boolean indicating the status of a normal fight
+@author Josh Brown
+*/
 	public void setNormalFightDone(boolean normalFightDone) {
 		this.winGold = 200;
 		this.normalFightDone = normalFightDone;
 	}
 
+/**
+A getter method which returns the status of a hard fight, whether it is complete or not 
+@return whether the hard fight is complete
+@author Josh Brown
+*/
 	public boolean isHardFightDone() {
 		return hardFightDone;
 	}
 
+/**
+A setter method which sets the hard fight to be finished and increase gold by $350
+@param HardFightDone, a boolean indicating the status of a hard fight
+@author Josh Brown
+*/
 	public void setHardFightDone(boolean hardFightDone) {
 		this.winGold = 350;
 		this.hardFightDone = hardFightDone;
 	}
 
+/**
+A setter method which sets the difficulty attribute
+@param difficulty, a int indicating the difficulty of a fight
+@author Josh Brown
+*/
 	public void setDifficulty(int difficulty) {
 		this.difficulty = difficulty;
 	}
 
+/**
+A setter method which sets the day attribute in the gay
+@param day, an integer indicating what day it is in the game
+@author Josh Brown
+*/
 	public void setDay(int day) {
 		this.day = day;
 	}
