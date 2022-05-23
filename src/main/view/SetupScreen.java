@@ -1,14 +1,9 @@
 package main.view;
 
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import java.awt.GridLayout;
 import javax.swing.JTextField;
 import javax.swing.JButton;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
@@ -22,7 +17,6 @@ import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.JSlider;
 import javax.swing.JComboBox;
-import javax.swing.JScrollBar;
 import java.awt.Color;
 import javax.swing.DefaultComboBoxModel;
 

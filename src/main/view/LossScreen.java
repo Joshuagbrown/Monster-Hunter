@@ -1,7 +1,6 @@
 package main.view;
 
 import java.awt.BorderLayout;
-import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -9,9 +8,6 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.Timer;
-
-import main.controller.GameEnvironment;
-import main.controller.GameRunner;
 
 /**
 Class Lossscreen that implements all the swing elements of the screen shown when the player loses their battle

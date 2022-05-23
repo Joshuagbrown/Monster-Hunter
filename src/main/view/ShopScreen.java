@@ -1,9 +1,6 @@
 package main.view;
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.ImageIcon;
 import javax.swing.JTextField;
 
 import main.controller.GameEnvironment;
@@ -31,8 +28,6 @@ import java.awt.Font;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 
-import java.awt.SystemColor;
-
 /**
 Class ShopScreen that implements all the swing elements of the screen shown when the player is in the Shop
 @author Aimee Cloutman
@@ -41,7 +36,6 @@ Class ShopScreen that implements all the swing elements of the screen shown when
 public class ShopScreen {
 
 	private JFrame frmTheShop;
-	private JTextField textField;
 	private GameEnvironment gameEnvironment;
 	private JTextField txtEnterMonsterNickname;
 

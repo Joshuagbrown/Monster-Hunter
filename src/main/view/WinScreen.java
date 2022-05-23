@@ -1,12 +1,7 @@
 package main.view;
 
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-
-import main.controller.GameEnvironment;
-import main.controller.GameRunner;
 
 import java.awt.BorderLayout;
 import javax.swing.JButton;

@@ -1,16 +1,11 @@
 package main.view;
 
 import java.awt.Color;
-import java.awt.EventQueue;
 import java.awt.Font;
-import java.awt.GridBagConstraints;
 import java.awt.GridLayout;
-import java.awt.Insets;
-
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.border.EtchedBorder;
@@ -18,13 +13,9 @@ import javax.swing.border.TitledBorder;
 
 import main.controller.GameEnvironment;
 import main.controller.GameRunner;
-import main.model.Monster;
-
 import javax.swing.JButton;
 import java.awt.SystemColor;
-import java.awt.GridBagLayout;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
 
@@ -51,6 +42,7 @@ public class BattleScreen {
 	/**
 	 * Initialize the contents of the frame.
 	 */
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	private void initialize() {
 		frmBattle = new JFrame();
 		frmBattle.setTitle("Battle");
@@ -514,6 +506,7 @@ public class BattleScreen {
 		JComboBox monsterSelectorForItem = new JComboBox(monsterArray);
 		monsterSelectorForItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				@SuppressWarnings("unused")
 				int selectedMonster = monsterSelectorForItem.getSelectedIndex();
 			}
 			
@@ -524,6 +517,7 @@ public class BattleScreen {
 		
 		JComboBox itemSelector = new JComboBox(itemArray);
 		itemSelector.addActionListener(new ActionListener() {
+			@SuppressWarnings("unused")
 			public void actionPerformed(ActionEvent e) {
 				int selectedItem = itemSelector.getSelectedIndex();
 			}

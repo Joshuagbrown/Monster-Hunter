@@ -1,24 +1,17 @@
 package main.view;
 
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 
 import main.controller.GameEnvironment;
 import main.controller.GameRunner;
 
 import javax.swing.JPanel;
-import java.awt.BorderLayout;
-import java.awt.Dimension;
 import java.awt.GridLayout;
 import javax.swing.JLabel;
 import javax.swing.JComboBox;
 import javax.swing.SwingConstants;
-import javax.swing.JSeparator;
 import java.awt.Color;
-import java.awt.SystemColor;
 import javax.swing.UIManager;
-import javax.swing.JSplitPane;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
@@ -26,11 +19,9 @@ import javax.swing.border.TitledBorder;
 import java.awt.Font;
 import javax.swing.border.EtchedBorder;
 import javax.swing.JButton;
-import javax.swing.border.BevelBorder;
 import javax.swing.border.MatteBorder;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.awt.FlowLayout;
 import javax.swing.DefaultComboBoxModel;
 /**
 Class MainScreen that implements all the swing elements of the screen shown when the player is on the Main game screen
@@ -41,7 +32,9 @@ public class MainScreen {
 
 	private JFrame frame;
 	private GameEnvironment gameEnvironment;
+	@SuppressWarnings("unused")
 	private int selectedMonster;
+	@SuppressWarnings("unused")
 	private int selectedItem;
 
 	/**
@@ -61,6 +54,7 @@ public class MainScreen {
 	/**
 	 * Initialize the contents of the frame.
 	 */
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(0, 0,874, 552);
@@ -432,6 +426,7 @@ public class MainScreen {
 		
 		JComboBox monsterSelectorForItem = new JComboBox(monsterArray);
 		monsterSelectorForItem.addActionListener(new ActionListener() {
+			@SuppressWarnings("unused")
 			public void actionPerformed(ActionEvent e) {
 				int selectedMonster = monsterSelectorForItem.getSelectedIndex();
 			}
@@ -445,6 +440,7 @@ public class MainScreen {
 		JComboBox itemSelector = new JComboBox(itemArray);
 		itemSelector.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				@SuppressWarnings("unused")
 				int selectedItem = itemSelector.getSelectedIndex();
 			}
 		});

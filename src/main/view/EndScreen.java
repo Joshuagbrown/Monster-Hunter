@@ -1,7 +1,5 @@
 	package main.view;
 
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
@@ -43,7 +41,7 @@ public class EndScreen {
 		scoreTitleLabel.setBounds(10, 96, 101, 36);
 		frame.getContentPane().add(scoreTitleLabel);
 		
-		JLabel scoreLabel = new JLabel(Integer.toString(gameEnvironment.getScore()));
+		JLabel scoreLabel = new JLabel(Integer.toString(gameEnvironment.getScore()*(gameEnvironment.getDifficulty()+1)));
 		scoreLabel.setBounds(136, 96, 65, 36);
 		frame.getContentPane().add(scoreLabel);
 		

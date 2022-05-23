@@ -32,6 +32,7 @@ Sets up a new game environment and adds the starting game available monsters to 
 		startingList.add(new Orc());
 		startingList.add(new Elf());
 		startingList.add(new Human());
+		@SuppressWarnings("unused")
 		SetupScreen setupScreen = new SetupScreen(gameEnvironment, startingList);
 	}
 
@@ -41,6 +42,7 @@ Takes the current game environment and launches the main screen of the game for 
 @author Josh Brown
 */
 	public static void launchMainScreen(GameEnvironment gameEnvironment) {
+		@SuppressWarnings("unused")
 		MainScreen mainScreen = new MainScreen(gameEnvironment);
 	}
 	
@@ -50,6 +52,7 @@ Takes the current game environment information and launches the shop screen for 
 @author Josh Brown
 */
 	public static void launchShopScreen(GameEnvironment gameEnvironment) {
+		@SuppressWarnings("unused")
 		ShopScreen shopScreen = new ShopScreen(gameEnvironment);
 	}
 
@@ -59,6 +62,7 @@ Takes the current game environment information and launches the battle screen fo
 @author Josh Brown
 */
 	public static void launchBattleScreen(GameEnvironment gameEnvironment) {
+		@SuppressWarnings("unused")
 		BattleScreen battleScreen = new BattleScreen(gameEnvironment);	
 	}
 
@@ -67,6 +71,7 @@ Displays the win screen for when a player wins a battle
 @author Josh Brown
 */
 	public static void displayWin() {
+		@SuppressWarnings("unused")
 		WinScreen WinScreen = new WinScreen();	
 
 	}
@@ -76,6 +81,7 @@ Displays the loss screen for when a player loses a battle
 @author Josh Brown
 */
 	public static void displayLoss() {
+		@SuppressWarnings("unused")
 		LossScreen lossScreen = new LossScreen();	
 
 	}
@@ -85,6 +91,7 @@ Displays the ending screen for when the game is over
 @author Josh Brown
 */
 	public static void launchEndScreen(GameEnvironment gameEnvironment) {
+		@SuppressWarnings("unused")
 		EndScreen endScreen = new EndScreen(gameEnvironment);	
 
 	}

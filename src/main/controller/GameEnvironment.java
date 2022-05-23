@@ -141,6 +141,9 @@ Sells a monster by deleting it form the monster party and increasing the gold by
 @author Josh Brown
 */
 	public boolean sellMonster(int index) {
+		if (this.party.getSize() == 1) {
+			return false;
+		}
 		if (this.party.getSize() > index) {
 			Monster m = this.getParty().getMonsterAtIndex(index);
 			this.player.setGold(this.player.getGold() + m.getSellPrice());
@@ -155,7 +158,11 @@ Gets the monsters in the enemy party from the battle the player is playing. Sets
 @param battleChoice the battle the player has chosen with the select group of monsters
 @author Josh Brown
 */
-	public void getEnemyMonsters(int battleChoice) {
+	public boolean getEnemyMonsters(int battleChoice) {
+		
+		if (battleChoice < 0 || battleChoice > 3) {
+			return false;
+		}
 		
 		this.enemyParty.setPartyList(new ArrayList<Monster>());
 		this.party.setCurrentFighterIndex(0);
@@ -196,6 +203,7 @@ Gets the monsters in the enemy party from the battle the player is playing. Sets
 				enemyParty.addMonster(new Dragon());
 			}
 		}
+		return true;
 				
 		
 	}
@@ -497,6 +505,10 @@ A getter method which returns the inventory a player currently holds
 		}
 		score += this.player.getGold();
 		return score;
+	}
+
+	public int getDifficulty() {
+		return difficulty;
 	}
 }
 
